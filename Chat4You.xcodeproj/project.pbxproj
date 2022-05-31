@@ -13,6 +13,9 @@
 		5974D85B2846396400EDE4E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5974D85A2846396400EDE4E2 /* Assets.xcassets */; };
 		5974D85E2846396400EDE4E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5974D85C2846396400EDE4E2 /* LaunchScreen.storyboard */; };
 		5974D86628463AF200EDE4E2 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5974D86528463AF200EDE4E2 /* .gitignore */; };
+		5974D86D28466F3700EDE4E2 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D86C28466F3700EDE4E2 /* UIButton + Extension.swift */; };
+		5974D86F2846715F00EDE4E2 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D86E2846715F00EDE4E2 /* UIFont + Extension.swift */; };
+		5974D8712846726600EDE4E2 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8702846726600EDE4E2 /* UIColor + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		5974D85D2846396400EDE4E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5974D85F2846396400EDE4E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5974D86528463AF200EDE4E2 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = Chat4You/SupportFiles/.gitignore; sourceTree = SOURCE_ROOT; };
+		5974D86C28466F3700EDE4E2 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
+		5974D86E2846715F00EDE4E2 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
+		5974D8702846726600EDE4E2 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 		5974D86B28466EBC00EDE4E2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5974D86C28466F3700EDE4E2 /* UIButton + Extension.swift */,
+				5974D86E2846715F00EDE4E2 /* UIFont + Extension.swift */,
+				5974D8702846726600EDE4E2 /* UIColor + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -178,9 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5974D86F2846715F00EDE4E2 /* UIFont + Extension.swift in Sources */,
 				5974D8562846396100EDE4E2 /* AuthViewController.swift in Sources */,
 				5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */,
+				5974D8712846726600EDE4E2 /* UIColor + Extension.swift in Sources */,
 				5974D8542846396100EDE4E2 /* SceneDelegate.swift in Sources */,
+				5974D86D28466F3700EDE4E2 /* UIButton + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +335,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4XK5S24922;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Chat4You/Info.plist;
+				INFOPLIST_FILE = Chat4You/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -352,7 +364,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4XK5S24922;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Chat4You/Info.plist;
+				INFOPLIST_FILE = Chat4You/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
