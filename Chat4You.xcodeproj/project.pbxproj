@@ -16,6 +16,8 @@
 		5974D86D28466F3700EDE4E2 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D86C28466F3700EDE4E2 /* UIButton + Extension.swift */; };
 		5974D86F2846715F00EDE4E2 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D86E2846715F00EDE4E2 /* UIFont + Extension.swift */; };
 		5974D8712846726600EDE4E2 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8702846726600EDE4E2 /* UIColor + Extension.swift */; };
+		5974D87328467B0700EDE4E2 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D87228467B0700EDE4E2 /* UILabel + Extension.swift */; };
+		5974D87528467BF100EDE4E2 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D87428467BF100EDE4E2 /* UIImageView + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		5974D86C28466F3700EDE4E2 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		5974D86E2846715F00EDE4E2 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		5974D8702846726600EDE4E2 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		5974D87228467B0700EDE4E2 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		5974D87428467BF100EDE4E2 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 				5974D86C28466F3700EDE4E2 /* UIButton + Extension.swift */,
 				5974D86E2846715F00EDE4E2 /* UIFont + Extension.swift */,
 				5974D8702846726600EDE4E2 /* UIColor + Extension.swift */,
+				5974D87228467B0700EDE4E2 /* UILabel + Extension.swift */,
+				5974D87428467BF100EDE4E2 /* UIImageView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -190,6 +196,8 @@
 				5974D86F2846715F00EDE4E2 /* UIFont + Extension.swift in Sources */,
 				5974D8562846396100EDE4E2 /* AuthViewController.swift in Sources */,
 				5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */,
+				5974D87328467B0700EDE4E2 /* UILabel + Extension.swift in Sources */,
+				5974D87528467BF100EDE4E2 /* UIImageView + Extension.swift in Sources */,
 				5974D8712846726600EDE4E2 /* UIColor + Extension.swift in Sources */,
 				5974D8542846396100EDE4E2 /* SceneDelegate.swift in Sources */,
 				5974D86D28466F3700EDE4E2 /* UIButton + Extension.swift in Sources */,
