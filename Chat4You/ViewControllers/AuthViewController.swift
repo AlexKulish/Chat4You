@@ -22,16 +22,16 @@ class AuthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupConstrains()
+        setupConstraints()
         view.backgroundColor = .white
     }
     
 }
 
-// MARK: - Setup constrains
+// MARK: - Setup constraints
 
 extension AuthViewController {
-    private func setupConstrains() {
+    private func setupConstraints() {
         googleButton.costomizeGoogleButton()
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)

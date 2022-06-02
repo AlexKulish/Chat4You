@@ -26,16 +26,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupConstrains()
+        setupConstraints()
     }
     
 }
 
-// MARK: - Setup constrains
+// MARK: - Setup constraints
 
 extension LoginViewController {
     
-    private func setupConstrains() {
+    private func setupConstraints() {
         googleButton.costomizeGoogleButton()
         let loginWithView = ButtonFormView(label: loginWithLabel, button: googleButton)
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 0)

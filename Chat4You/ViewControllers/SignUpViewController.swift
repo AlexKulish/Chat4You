@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupConstrains()
+        setupConstraints()
         view.backgroundColor = .white
     }
     
@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController {
     
-    private func setupConstrains() {
+    private func setupConstraints() {
         
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 0)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 0)
