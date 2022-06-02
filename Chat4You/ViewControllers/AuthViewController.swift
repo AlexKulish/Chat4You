@@ -23,8 +23,14 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstrains()
+        view.backgroundColor = .white
     }
     
+}
+
+// MARK: - Setup constrains
+
+extension AuthViewController {
     private func setupConstrains() {
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
@@ -49,10 +55,7 @@ class AuthViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             stackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -40)
         ])
-        
     }
-
-
 }
 
 // MARK: - SwiftUI
