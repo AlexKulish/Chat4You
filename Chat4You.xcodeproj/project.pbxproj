@@ -19,6 +19,7 @@
 		5974D87328467B0700EDE4E2 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D87228467B0700EDE4E2 /* UILabel + Extension.swift */; };
 		5974D87528467BF100EDE4E2 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D87428467BF100EDE4E2 /* UIImageView + Extension.swift */; };
 		5974D87828477FEE00EDE4E2 /* ButtonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D87728477FEE00EDE4E2 /* ButtonFormView.swift */; };
+		599C9C722848B3A3000F577F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C712848B3A3000F577F /* LoginViewController.swift */; };
 		59D804F728479230006B75A2 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804F628479230006B75A2 /* UIStackView + Extension.swift */; };
 		59D804F928479D27006B75A2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804F828479D26006B75A2 /* SignUpViewController.swift */; };
 		59D804FB2847A0CB006B75A2 /* OneLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */; };
@@ -39,6 +40,7 @@
 		5974D87228467B0700EDE4E2 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		5974D87428467BF100EDE4E2 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		5974D87728477FEE00EDE4E2 /* ButtonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormView.swift; sourceTree = "<group>"; };
+		599C9C712848B3A3000F577F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		59D804F628479230006B75A2 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		59D804F828479D26006B75A2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextField.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				5974D8552846396100EDE4E2 /* AuthViewController.swift */,
 				59D804F828479D26006B75A2 /* SignUpViewController.swift */,
+				599C9C712848B3A3000F577F /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				5974D87528467BF100EDE4E2 /* UIImageView + Extension.swift in Sources */,
 				5974D8712846726600EDE4E2 /* UIColor + Extension.swift in Sources */,
 				5974D8542846396100EDE4E2 /* SceneDelegate.swift in Sources */,
+				599C9C722848B3A3000F577F /* LoginViewController.swift in Sources */,
 				5974D86D28466F3700EDE4E2 /* UIButton + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
