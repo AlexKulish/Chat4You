@@ -36,6 +36,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     private func setupConstrains() {
+        googleButton.costomizeGoogleButton()
         let loginWithView = ButtonFormView(label: loginWithLabel, button: googleButton)
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 0)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 0)

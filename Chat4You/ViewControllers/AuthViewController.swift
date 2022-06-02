@@ -32,6 +32,7 @@ class AuthViewController: UIViewController {
 
 extension AuthViewController {
     private func setupConstrains() {
+        googleButton.costomizeGoogleButton()
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
         let loginView = ButtonFormView(label: alreadyOnBoardLabel, button: loginButton)
