@@ -11,6 +11,7 @@
 		593242832859E6F2005FC4BF /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 593242822859E6F2005FC4BF /* waitingChats.json */; };
 		593242852859E6FA005FC4BF /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 593242842859E6FA005FC4BF /* activeChats.json */; };
 		593242872859E73F005FC4BF /* Bundle + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593242862859E73F005FC4BF /* Bundle + Extension.swift */; };
+		5932428A2859FD89005FC4BF /* ActiveChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593242892859FD89005FC4BF /* ActiveChatCell.swift */; };
 		5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8512846396100EDE4E2 /* AppDelegate.swift */; };
 		5974D8542846396100EDE4E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8532846396100EDE4E2 /* SceneDelegate.swift */; };
 		5974D8562846396100EDE4E2 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8552846396100EDE4E2 /* AuthViewController.swift */; };
@@ -40,6 +41,7 @@
 		593242822859E6F2005FC4BF /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
 		593242842859E6FA005FC4BF /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
 		593242862859E73F005FC4BF /* Bundle + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle + Extension.swift"; sourceTree = "<group>"; };
+		593242892859FD89005FC4BF /* ActiveChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatCell.swift; sourceTree = "<group>"; };
 		5974D84E2846396100EDE4E2 /* Chat4You.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat4You.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5974D8512846396100EDE4E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5974D8532846396100EDE4E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 				593242842859E6FA005FC4BF /* activeChats.json */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		593242882859FD79005FC4BF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				593242892859FD89005FC4BF /* ActiveChatCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		5974D8452846396100EDE4E2 = {
@@ -173,6 +183,7 @@
 		5974D87628477FDC00EDE4E2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				593242882859FD79005FC4BF /* Cell */,
 				5974D87728477FEE00EDE4E2 /* ButtonFormView.swift */,
 				59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */,
 				599C9C752848CA91000F577F /* AddPhotoView.swift */,
@@ -283,6 +294,7 @@
 				5974D87528467BF100EDE4E2 /* UIImageView + Extension.swift in Sources */,
 				5974D8712846726600EDE4E2 /* UIColor + Extension.swift in Sources */,
 				5974D8542846396100EDE4E2 /* SceneDelegate.swift in Sources */,
+				5932428A2859FD89005FC4BF /* ActiveChatCell.swift in Sources */,
 				599C9C722848B3A3000F577F /* LoginViewController.swift in Sources */,
 				5974D86D28466F3700EDE4E2 /* UIButton + Extension.swift in Sources */,
 			);
