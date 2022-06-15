@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		593242812859E6C9005FC4BF /* MChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593242802859E6C9005FC4BF /* MChat.swift */; };
+		593242832859E6F2005FC4BF /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 593242822859E6F2005FC4BF /* waitingChats.json */; };
+		593242852859E6FA005FC4BF /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 593242842859E6FA005FC4BF /* activeChats.json */; };
+		593242872859E73F005FC4BF /* Bundle + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593242862859E73F005FC4BF /* Bundle + Extension.swift */; };
 		5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8512846396100EDE4E2 /* AppDelegate.swift */; };
 		5974D8542846396100EDE4E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8532846396100EDE4E2 /* SceneDelegate.swift */; };
 		5974D8562846396100EDE4E2 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8552846396100EDE4E2 /* AuthViewController.swift */; };
@@ -32,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		593242802859E6C9005FC4BF /* MChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MChat.swift; sourceTree = "<group>"; };
+		593242822859E6F2005FC4BF /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
+		593242842859E6FA005FC4BF /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
+		593242862859E73F005FC4BF /* Bundle + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle + Extension.swift"; sourceTree = "<group>"; };
 		5974D84E2846396100EDE4E2 /* Chat4You.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat4You.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5974D8512846396100EDE4E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5974D8532846396100EDE4E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +77,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5932427F2859E6AA005FC4BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				593242802859E6C9005FC4BF /* MChat.swift */,
+				593242822859E6F2005FC4BF /* waitingChats.json */,
+				593242842859E6FA005FC4BF /* activeChats.json */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5974D8452846396100EDE4E2 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +106,7 @@
 		5974D8502846396100EDE4E2 /* Chat4You */ = {
 			isa = PBXGroup;
 			children = (
+				5932427F2859E6AA005FC4BF /* Model */,
 				5974D87628477FDC00EDE4E2 /* Views */,
 				5974D86828466E9200EDE4E2 /* ViewControllers */,
 				5974D86B28466EBC00EDE4E2 /* Extensions */,
@@ -146,6 +165,7 @@
 				5974D87428467BF100EDE4E2 /* UIImageView + Extension.swift */,
 				59D804F628479230006B75A2 /* UIStackView + Extension.swift */,
 				599C9C772848EBC4000F577F /* SegmentedControl + Extension.swift */,
+				593242862859E73F005FC4BF /* Bundle + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -229,9 +249,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				593242852859E6FA005FC4BF /* activeChats.json in Resources */,
 				5974D86628463AF200EDE4E2 /* .gitignore in Resources */,
 				5974D85E2846396400EDE4E2 /* LaunchScreen.storyboard in Resources */,
 				5974D85B2846396400EDE4E2 /* Assets.xcassets in Resources */,
+				593242832859E6F2005FC4BF /* waitingChats.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,11 +270,13 @@
 				59D804F928479D27006B75A2 /* SignUpViewController.swift in Sources */,
 				5974D86F2846715F00EDE4E2 /* UIFont + Extension.swift in Sources */,
 				599C9C7F2848FA52000F577F /* PeopleViewController.swift in Sources */,
+				593242872859E73F005FC4BF /* Bundle + Extension.swift in Sources */,
 				5974D8562846396100EDE4E2 /* AuthViewController.swift in Sources */,
 				599C9C742848C785000F577F /* SetupProfileViewController.swift in Sources */,
 				5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */,
 				59D804F728479230006B75A2 /* UIStackView + Extension.swift in Sources */,
 				599C9C762848CA91000F577F /* AddPhotoView.swift in Sources */,
+				593242812859E6C9005FC4BF /* MChat.swift in Sources */,
 				5974D87828477FEE00EDE4E2 /* ButtonFormView.swift in Sources */,
 				5974D87328467B0700EDE4E2 /* UILabel + Extension.swift in Sources */,
 				599C9C782848EBC4000F577F /* SegmentedControl + Extension.swift in Sources */,
