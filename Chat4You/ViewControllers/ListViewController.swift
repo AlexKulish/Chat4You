@@ -35,7 +35,7 @@ class ListViewController: UIViewController {
         collectionView.backgroundColor = .customWhite
         view.addSubview(collectionView)
         collectionView.register(ActiveChatCell.self, forCellWithReuseIdentifier: ActiveChatCell.reuseId)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId2")
+        collectionView.register(WaitingChatCell.self, forCellWithReuseIdentifier: WaitingChatCell.reuseId)
     }
     
     private func setupSearchBar() {
@@ -61,7 +61,7 @@ class ListViewController: UIViewController {
 
 extension ListViewController {
     
-    private func configure<T: ConfigureCell>(cellType: T.Type, with chat: MChat, for indexPath: IndexPath) -> T {
+    private func configure<T: ConfigureCellProtocol>(cellType: T.Type, with chat: MChat, for indexPath: IndexPath) -> T {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseId, for: indexPath) as? T else {
             fatalError("Unable to deque \(cellType)")
         }
@@ -78,9 +78,10 @@ extension ListViewController {
             case .activeChats:
                 return self.configure(cellType: ActiveChatCell.self, with: itemIdentifier, for: indexPath)
             case .waitingChats:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId2", for: indexPath)
-                cell.backgroundColor = .red
-                return cell
+                return self.configure(cellType: WaitingChatCell.self, with: itemIdentifier, for: indexPath)
+//                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WaitingChatCell.reuseId, for: indexPath)
+//                cell.backgroundColor = .red
+//                return cell
             }
         })
     }

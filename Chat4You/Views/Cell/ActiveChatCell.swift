@@ -7,12 +7,7 @@
 
 import UIKit
 
-protocol ConfigureCell {
-    static var reuseId: String { get }
-    func configure(with chat: MChat)
-}
-
-class ActiveChatCell: UICollectionViewCell, ConfigureCell {
+class ActiveChatCell: UICollectionViewCell, ConfigureCellProtocol {
     
     static var reuseId = "ActiveChatCell"
     
