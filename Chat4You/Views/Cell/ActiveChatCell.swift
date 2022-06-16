@@ -39,9 +39,10 @@ class ActiveChatCell: UICollectionViewCell, ConfigureCell {
     }()
     
     private lazy var gradientView: UIView = {
-        let view = UIView()
+        let view = GradientView(from: .topTrailing, to: .bottomLeading, startColor: .customPurple, endColor: .customBlue)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .green
+        view.layer.cornerRadius = 4
+        view.clipsToBounds = true
         return view
     }()
     
@@ -69,7 +70,7 @@ class ActiveChatCell: UICollectionViewCell, ConfigureCell {
     }
 }
 
-// MARK: - Setup constrains
+// MARK: - Setup constraints
 
 extension ActiveChatCell {
     
