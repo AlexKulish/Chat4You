@@ -15,6 +15,7 @@
 		5932428C285B2F68005FC4BF /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5932428B285B2F68005FC4BF /* GradientView.swift */; };
 		5932428E285B63B5005FC4BF /* WaitingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5932428D285B63B5005FC4BF /* WaitingChatCell.swift */; };
 		59324291285B677F005FC4BF /* ConfigureCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59324290285B677F005FC4BF /* ConfigureCellProtocol.swift */; };
+		59324294285B6A2F005FC4BF /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59324293285B6A2F005FC4BF /* SectionHeader.swift */; };
 		5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8512846396100EDE4E2 /* AppDelegate.swift */; };
 		5974D8542846396100EDE4E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8532846396100EDE4E2 /* SceneDelegate.swift */; };
 		5974D8562846396100EDE4E2 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8552846396100EDE4E2 /* AuthViewController.swift */; };
@@ -48,6 +49,7 @@
 		5932428B285B2F68005FC4BF /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5932428D285B63B5005FC4BF /* WaitingChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatCell.swift; sourceTree = "<group>"; };
 		59324290285B677F005FC4BF /* ConfigureCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureCellProtocol.swift; sourceTree = "<group>"; };
+		59324293285B6A2F005FC4BF /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		5974D84E2846396100EDE4E2 /* Chat4You.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat4You.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5974D8512846396100EDE4E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5974D8532846396100EDE4E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */,
 				599C9C752848CA91000F577F /* AddPhotoView.swift */,
 				5932428B285B2F68005FC4BF /* GradientView.swift */,
+				59324293285B6A2F005FC4BF /* SectionHeader.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				5974D8562846396100EDE4E2 /* AuthViewController.swift in Sources */,
 				599C9C742848C785000F577F /* SetupProfileViewController.swift in Sources */,
 				5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */,
+				59324294285B6A2F005FC4BF /* SectionHeader.swift in Sources */,
 				59D804F728479230006B75A2 /* UIStackView + Extension.swift in Sources */,
 				599C9C762848CA91000F577F /* AddPhotoView.swift in Sources */,
 				593242812859E6C9005FC4BF /* MChat.swift in Sources */,
