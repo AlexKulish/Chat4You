@@ -5,7 +5,7 @@
 //  Created by Alex Kulish on 15.06.2022.
 //
 
-import UIKit
+import Foundation
 
 struct MChat: Hashable, Decodable {
     var username: String

@@ -35,6 +35,8 @@
 		599C9C7A2848F620000F577F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C792848F620000F577F /* ListViewController.swift */; };
 		599C9C7D2848F994000F577F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C7C2848F994000F577F /* MainTabBarController.swift */; };
 		599C9C7F2848FA52000F577F /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C7E2848FA52000F577F /* PeopleViewController.swift */; };
+		59C500272860B7D50051F3A9 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 59C500262860B7D50051F3A9 /* users.json */; };
+		59C500292860B8670051F3A9 /* MUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C500282860B8670051F3A9 /* MUser.swift */; };
 		59D804F728479230006B75A2 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804F628479230006B75A2 /* UIStackView + Extension.swift */; };
 		59D804F928479D27006B75A2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804F828479D26006B75A2 /* SignUpViewController.swift */; };
 		59D804FB2847A0CB006B75A2 /* OneLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */; };
@@ -71,6 +73,8 @@
 		599C9C792848F620000F577F /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		599C9C7C2848F994000F577F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		599C9C7E2848FA52000F577F /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		59C500262860B7D50051F3A9 /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
+		59C500282860B8670051F3A9 /* MUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUser.swift; sourceTree = "<group>"; };
 		59D804F628479230006B75A2 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		59D804F828479D26006B75A2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextField.swift; sourceTree = "<group>"; };
@@ -91,8 +95,10 @@
 			isa = PBXGroup;
 			children = (
 				593242802859E6C9005FC4BF /* MChat.swift */,
+				59C500282860B8670051F3A9 /* MUser.swift */,
 				593242822859E6F2005FC4BF /* waitingChats.json */,
 				593242842859E6FA005FC4BF /* activeChats.json */,
+				59C500262860B7D50051F3A9 /* users.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59C500272860B7D50051F3A9 /* users.json in Resources */,
 				593242852859E6FA005FC4BF /* activeChats.json in Resources */,
 				5974D86628463AF200EDE4E2 /* .gitignore in Resources */,
 				5974D85E2846396400EDE4E2 /* LaunchScreen.storyboard in Resources */,
@@ -316,6 +323,7 @@
 				599C9C742848C785000F577F /* SetupProfileViewController.swift in Sources */,
 				5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */,
 				59324294285B6A2F005FC4BF /* SectionHeader.swift in Sources */,
+				59C500292860B8670051F3A9 /* MUser.swift in Sources */,
 				59D804F728479230006B75A2 /* UIStackView + Extension.swift in Sources */,
 				599C9C762848CA91000F577F /* AddPhotoView.swift in Sources */,
 				593242812859E6C9005FC4BF /* MChat.swift in Sources */,
