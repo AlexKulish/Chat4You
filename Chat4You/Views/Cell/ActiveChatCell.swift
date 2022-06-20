@@ -58,7 +58,8 @@ class ActiveChatCell: UICollectionViewCell, ConfigureCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with chat: MChat) {
+    func configure<U>(with value: U) where U : Hashable {
+        guard let chat: MChat = value as? MChat else { return }
         friendImageView.image = UIImage(named: chat.userImageString)
         friendName.text = chat.username
         lastMessage.text = chat.lastMessage

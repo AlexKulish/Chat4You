@@ -38,7 +38,8 @@ class WaitingChatCell: UICollectionViewCell, ConfigureCellProtocol {
         ])
     }
     
-    func configure(with chat: MChat) {
+    func configure<U>(with value: U) where U : Hashable {
+        guard let chat = value as? MChat else { return }
         friendImageView.image = UIImage(named: chat.userImageString)
     }
 }
