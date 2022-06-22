@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
     }()
     
     private lazy var aboutMeLabel: UILabel = {
-        let label = UILabel(text: "Hello, my friend asdasd asdasd asdasd aasd asasd dasd ", font: .systemFont(ofSize: 16, weight: .light))
+        let label = UILabel(text: "Hello, my name is Alex", font: .systemFont(ofSize: 16, weight: .light))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -50,6 +50,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupConstraints()
         getButton()
+        setupNotificationKeyboardObservers()
         view.backgroundColor = .white
     }
     
@@ -58,9 +59,28 @@ class ProfileViewController: UIViewController {
         rightButton.addTarget(self, action: #selector(rightButtonPressed), for: .touchUpInside)
     }
     
+    private func setupNotificationKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     @objc private func rightButtonPressed() {
         aboutMeLabel.text = textField.text
         textField.text = nil
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
 }
