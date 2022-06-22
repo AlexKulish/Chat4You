@@ -40,6 +40,8 @@
 		59C5002B2860C98F0051F3A9 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C5002A2860C98F0051F3A9 /* UserCell.swift */; };
 		59C5002D2860CB4B0051F3A9 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C5002C2860CB4B0051F3A9 /* UIViewController + Extension.swift */; };
 		59C5002F28630EEF0051F3A9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C5002E28630EEF0051F3A9 /* ProfileViewController.swift */; };
+		59C5003128634C9A0051F3A9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C5003028634C9A0051F3A9 /* CustomTextField.swift */; };
+		59C50033286354840051F3A9 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C50032286354840051F3A9 /* UIView + Extension.swift */; };
 		59D804F728479230006B75A2 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804F628479230006B75A2 /* UIStackView + Extension.swift */; };
 		59D804F928479D27006B75A2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804F828479D26006B75A2 /* SignUpViewController.swift */; };
 		59D804FB2847A0CB006B75A2 /* OneLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */; };
@@ -81,6 +83,8 @@
 		59C5002A2860C98F0051F3A9 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		59C5002C2860CB4B0051F3A9 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		59C5002E28630EEF0051F3A9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		59C5003028634C9A0051F3A9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		59C50032286354840051F3A9 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		59D804F628479230006B75A2 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		59D804F828479D26006B75A2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextField.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 				599C9C752848CA91000F577F /* AddPhotoView.swift */,
 				5932428B285B2F68005FC4BF /* GradientView.swift */,
 				59324293285B6A2F005FC4BF /* SectionHeader.swift */,
+				59C5003028634C9A0051F3A9 /* CustomTextField.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				599C9C772848EBC4000F577F /* SegmentedControl + Extension.swift */,
 				593242862859E73F005FC4BF /* Bundle + Extension.swift */,
 				59C5002C2860CB4B0051F3A9 /* UIViewController + Extension.swift */,
+				59C50032286354840051F3A9 /* UIView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,7 +343,9 @@
 				59D804F728479230006B75A2 /* UIStackView + Extension.swift in Sources */,
 				599C9C762848CA91000F577F /* AddPhotoView.swift in Sources */,
 				593242812859E6C9005FC4BF /* MChat.swift in Sources */,
+				59C5003128634C9A0051F3A9 /* CustomTextField.swift in Sources */,
 				5974D87828477FEE00EDE4E2 /* ButtonFormView.swift in Sources */,
+				59C50033286354840051F3A9 /* UIView + Extension.swift in Sources */,
 				5974D87328467B0700EDE4E2 /* UILabel + Extension.swift in Sources */,
 				599C9C782848EBC4000F577F /* SegmentedControl + Extension.swift in Sources */,
 				59C5002B2860C98F0051F3A9 /* UserCell.swift in Sources */,

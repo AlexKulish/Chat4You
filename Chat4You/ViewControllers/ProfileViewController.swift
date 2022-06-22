@@ -41,17 +41,26 @@ class ProfileViewController: UIViewController {
     }()
     
     private lazy var textField: UITextField = {
-        let textField = UITextField()
+        let textField = CustomTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.borderStyle = .roundedRect
-        textField.placeholder = "Add your opinion"
         return textField
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
+        getButton()
         view.backgroundColor = .white
+    }
+    
+    private func getButton() {
+        guard let rightButton = textField.rightView as? UIButton else { return }
+        rightButton.addTarget(self, action: #selector(rightButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc private func rightButtonPressed() {
+        aboutMeLabel.text = textField.text
+        textField.text = nil
     }
     
 }
@@ -93,7 +102,7 @@ extension ProfileViewController {
         NSLayoutConstraint.activate([
             textField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
             textField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24),
-            textField.topAnchor.constraint(equalTo: aboutMeLabel.bottomAnchor, constant: 8),
+            textField.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -40),
             textField.heightAnchor.constraint(equalToConstant: 50)
         ])
         
