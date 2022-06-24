@@ -29,6 +29,16 @@ class WaitingChatCell: UICollectionViewCell, ConfigureCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure<U>(with value: U) where U : Hashable {
+        guard let chat = value as? MChat else { return }
+        friendImageView.image = UIImage(named: chat.userImageString)
+    }
+}
+
+// MARK: - Setup constraints
+
+extension WaitingChatCell {
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             friendImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -36,10 +46,5 @@ class WaitingChatCell: UICollectionViewCell, ConfigureCellProtocol {
             friendImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             friendImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
-    }
-    
-    func configure<U>(with value: U) where U : Hashable {
-        guard let chat = value as? MChat else { return }
-        friendImageView.image = UIImage(named: chat.userImageString)
     }
 }

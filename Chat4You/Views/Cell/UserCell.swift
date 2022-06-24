@@ -51,6 +51,26 @@ class UserCell: UICollectionViewCell, ConfigureCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setupShadow() {
+        layer.cornerRadius = 4
+        layer.shadowColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
+        layer.shadowRadius = 3
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+    }
+    
+    func configure<U>(with value: U) where U : Hashable {
+        guard let user = value as? MUser else { return }
+        userImageView.image = UIImage(named: user.avatarStringURL)
+        userNameLabel.text = user.username
+    }
+    
+}
+
+// MARK: - Setup constraints
+
+extension UserCell {
+    
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
@@ -75,20 +95,5 @@ class UserCell: UICollectionViewCell, ConfigureCellProtocol {
         ])
         
     }
-    
-    private func setupShadow() {
-        layer.cornerRadius = 4
-        layer.shadowColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
-        layer.shadowRadius = 3
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0, height: 4)
-    }
-    
-    func configure<U>(with value: U) where U : Hashable {
-        guard let user = value as? MUser else { return }
-        userImageView.image = UIImage(named: user.avatarStringURL)
-        userNameLabel.text = user.username
-    }
-    
     
 }

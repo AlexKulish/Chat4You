@@ -48,39 +48,11 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .customWhite
+        addSubviews()
         setupConstraints()
         getButton()
         setupNotificationKeyboardObservers()
-        view.backgroundColor = .white
-    }
-    
-    private func getButton() {
-        guard let rightButton = textField.rightView as? UIButton else { return }
-        rightButton.addTarget(self, action: #selector(rightButtonPressed), for: .touchUpInside)
-    }
-    
-    private func setupNotificationKeyboardObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc private func rightButtonPressed() {
-        aboutMeLabel.text = textField.text
-        textField.text = nil
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
     }
     
 }
@@ -89,9 +61,12 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController {
     
-    private func setupConstraints() {
+    private func addSubviews() {
         view.addSubview(userImageView)
         view.addSubview(containerView)
+    }
+    
+    private func setupConstraints() {
         
         NSLayoutConstraint.activate([
             userImageView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -126,6 +101,47 @@ extension ProfileViewController {
             textField.heightAnchor.constraint(equalToConstant: 50)
         ])
         
+    }
+    
+}
+
+// MARK: - Setup button action
+
+extension ProfileViewController {
+    
+    private func getButton() {
+        guard let rightButton = textField.rightView as? UIButton else { return }
+        rightButton.addTarget(self, action: #selector(rightButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc private func rightButtonPressed() {
+        aboutMeLabel.text = textField.text
+        textField.text = nil
+    }
+    
+}
+
+// MARK: - Setup Notification Keyboard Observers
+
+extension ProfileViewController {
+    
+    private func setupNotificationKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
 }
