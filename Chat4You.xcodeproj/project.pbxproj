@@ -45,6 +45,7 @@
 		59D804F728479230006B75A2 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804F628479230006B75A2 /* UIStackView + Extension.swift */; };
 		59D804F928479D27006B75A2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804F828479D26006B75A2 /* SignUpViewController.swift */; };
 		59D804FB2847A0CB006B75A2 /* OneLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */; };
+		59DC46F82865E6BA00E07D6F /* ChatRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DC46F72865E6BA00E07D6F /* ChatRequestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		59D804F628479230006B75A2 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		59D804F828479D26006B75A2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextField.swift; sourceTree = "<group>"; };
+		59DC46F72865E6BA00E07D6F /* ChatRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				599C9C792848F620000F577F /* ListViewController.swift */,
 				599C9C7E2848FA52000F577F /* PeopleViewController.swift */,
 				59C5002E28630EEF0051F3A9 /* ProfileViewController.swift */,
+				59DC46F72865E6BA00E07D6F /* ChatRequestViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				59C5002F28630EEF0051F3A9 /* ProfileViewController.swift in Sources */,
 				59324294285B6A2F005FC4BF /* SectionHeader.swift in Sources */,
 				59C500292860B8670051F3A9 /* MUser.swift in Sources */,
+				59DC46F82865E6BA00E07D6F /* ChatRequestViewController.swift in Sources */,
 				59D804F728479230006B75A2 /* UIStackView + Extension.swift in Sources */,
 				599C9C762848CA91000F577F /* AddPhotoView.swift in Sources */,
 				593242812859E6C9005FC4BF /* MChat.swift in Sources */,
