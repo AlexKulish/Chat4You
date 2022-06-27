@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController {
     private lazy var aboutMeLabel: UILabel = {
         let label = UILabel(text: "Hello, my name is Alex", font: .systemFont(ofSize: 16, weight: .light))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         return label
     }()
     

@@ -32,6 +32,7 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .customWhite
         setupCollectionView()
         setupSearchBar()
         setupDataSource()
