@@ -29,6 +29,21 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .customWhite
         setupConstraints()
         setupNotificationKeyboardObservers()
+        
+        signUpButton.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc private func signUpButtonPressed() {
+        print(#function)
+        AuthService.shared.register(email: emailTextField.text, password: passwordTextField.text, confirmPassword: confirmPasswordTextField.text) { result in
+            switch result {
+            case .success(let user):
+                self.showAlert(with: "Успешно!", and: "Успешная регистрация")
+            case .failure(let error):
+                self.showAlert(with: "Ошибка!", and: error.localizedDescription)
+                print(error.localizedDescription)
+            }
+        }
     }
     
 }

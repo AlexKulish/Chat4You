@@ -13,6 +13,7 @@
 		592F26B1286AFE8000C823F4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 592F26B0286AFE8000C823F4 /* FirebaseDatabase */; };
 		592F26B3286AFE8000C823F4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 592F26B2286AFE8000C823F4 /* FirebaseFirestore */; };
 		592F26B5286AFE8000C823F4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 592F26B4286AFE8000C823F4 /* FirebaseStorage */; };
+		592F26B8286B3BA300C823F4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592F26B7286B3BA300C823F4 /* AuthService.swift */; };
 		593242812859E6C9005FC4BF /* MChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593242802859E6C9005FC4BF /* MChat.swift */; };
 		593242832859E6F2005FC4BF /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 593242822859E6F2005FC4BF /* waitingChats.json */; };
 		593242852859E6FA005FC4BF /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 593242842859E6FA005FC4BF /* activeChats.json */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		592F26A9286AFC3200C823F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		592F26B7286B3BA300C823F4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		593242802859E6C9005FC4BF /* MChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MChat.swift; sourceTree = "<group>"; };
 		593242822859E6F2005FC4BF /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
 		593242842859E6FA005FC4BF /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
@@ -115,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		592F26B6286B3B8000C823F4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				592F26B7286B3BA300C823F4 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		5932427F2859E6AA005FC4BF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +190,7 @@
 				5974D86828466E9200EDE4E2 /* ViewControllers */,
 				5974D87628477FDC00EDE4E2 /* Views */,
 				5932428F285B6762005FC4BF /* Protocols */,
+				592F26B6286B3B8000C823F4 /* Services */,
 				5932427F2859E6AA005FC4BF /* Model */,
 				5974D86B28466EBC00EDE4E2 /* Extensions */,
 				5974D86728466E7A00EDE4E2 /* SupportFiles */,
@@ -383,6 +394,7 @@
 				5932428E285B63B5005FC4BF /* WaitingChatCell.swift in Sources */,
 				5974D8542846396100EDE4E2 /* SceneDelegate.swift in Sources */,
 				5932428A2859FD89005FC4BF /* ActiveChatCell.swift in Sources */,
+				592F26B8286B3BA300C823F4 /* AuthService.swift in Sources */,
 				599C9C722848B3A3000F577F /* LoginViewController.swift in Sources */,
 				5974D86D28466F3700EDE4E2 /* UIButton + Extension.swift in Sources */,
 			);

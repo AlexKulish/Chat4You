@@ -28,6 +28,26 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .customWhite
         setupConstraints()
         setupNotificationKeyboardObservers()
+        
+        loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc private func loginButtonPressed() {
+        print(#function)
+        
+        AuthService.shared.login(email: emailTextField.text, password: passwordTextField.text) { result in
+            switch result {
+            case .success(let user):
+                self.showAlert(with: "Успешно!", and: "Пользователь найден")
+            case .failure(let error):
+                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+            }
+        }
+    }
+    
+    @objc private func signUpButtonPressed() {
+        print(#function)
     }
     
 }

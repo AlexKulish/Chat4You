@@ -19,11 +19,26 @@ class AuthViewController: UIViewController {
     
     let logoImageView = UIImageView(image: UIImage(named: "Logo"), contentMode: .scaleAspectFit)
     
+    let signUpVC = SignUpViewController()
+    let loginVC = LoginViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customWhite
         setupConstraints()
+        
+        emailButton.addTarget(self, action: #selector(emailButtonPressed), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc private func emailButtonPressed() {
+        print(#function)
+        present(signUpVC, animated: true, completion: nil)
+    }
+    
+    @objc private func loginButtonPressed() {
+        print(#function)
+        present(loginVC, animated: true, completion: nil)
     }
     
 }
