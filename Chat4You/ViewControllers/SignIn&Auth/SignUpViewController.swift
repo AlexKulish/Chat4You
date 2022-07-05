@@ -23,6 +23,7 @@ class SignUpViewController: UIViewController {
     let passwordTextField = OneLineTextField(font: .avenir20())
     let confirmPasswordTextField = OneLineTextField(font: .avenir20())
     
+    weak var delegate: AuthNavigationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class SignUpViewController: UIViewController {
         setupNotificationKeyboardObservers()
         
         signUpButton.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
     }
     
     @objc private func signUpButtonPressed() {
@@ -38,11 +40,19 @@ class SignUpViewController: UIViewController {
         AuthService.shared.register(email: emailTextField.text, password: passwordTextField.text, confirmPassword: confirmPasswordTextField.text) { result in
             switch result {
             case .success(let user):
-                self.showAlert(with: "Успешно!", and: "Успешная регистрация")
+                self.showAlert(with: "Успешно!", and: "Вы успешно зарегистрированы") {
+                    self.present(SetupProfileViewController(), animated: true, completion: nil)
+                }
             case .failure(let error):
                 self.showAlert(with: "Ошибка!", and: error.localizedDescription)
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    @objc private func loginButtonPressed() {
+        dismiss(animated: true) {
+            self.delegate?.toLoginVC()
         }
     }
     

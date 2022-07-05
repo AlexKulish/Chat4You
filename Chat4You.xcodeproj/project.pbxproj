@@ -37,6 +37,7 @@
 		5974D87828477FEE00EDE4E2 /* ButtonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D87728477FEE00EDE4E2 /* ButtonFormView.swift */; };
 		59915A86287440F0008D263E /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59915A85287440F0008D263E /* Validators.swift */; };
 		59915A882874488F008D263E /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59915A872874488F008D263E /* AuthError.swift */; };
+		59915A8A28748253008D263E /* AuthNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59915A8928748253008D263E /* AuthNavigationDelegate.swift */; };
 		599C9C722848B3A3000F577F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C712848B3A3000F577F /* LoginViewController.swift */; };
 		599C9C742848C785000F577F /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C732848C785000F577F /* SetupProfileViewController.swift */; };
 		599C9C762848CA91000F577F /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C752848CA91000F577F /* AddPhotoView.swift */; };
@@ -85,6 +86,7 @@
 		5974D87728477FEE00EDE4E2 /* ButtonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormView.swift; sourceTree = "<group>"; };
 		59915A85287440F0008D263E /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		59915A872874488F008D263E /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		59915A8928748253008D263E /* AuthNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationDelegate.swift; sourceTree = "<group>"; };
 		599C9C712848B3A3000F577F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		599C9C732848C785000F577F /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
 		599C9C752848CA91000F577F /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				59324290285B677F005FC4BF /* ConfigureCellProtocol.swift */,
+				59915A8928748253008D263E /* AuthNavigationDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				59915A86287440F0008D263E /* Validators.swift in Sources */,
 				593242872859E73F005FC4BF /* Bundle + Extension.swift in Sources */,
 				5974D8562846396100EDE4E2 /* AuthViewController.swift in Sources */,
+				59915A8A28748253008D263E /* AuthNavigationDelegate.swift in Sources */,
 				599C9C742848C785000F577F /* SetupProfileViewController.swift in Sources */,
 				5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */,
 				59C5002F28630EEF0051F3A9 /* ProfileViewController.swift in Sources */,

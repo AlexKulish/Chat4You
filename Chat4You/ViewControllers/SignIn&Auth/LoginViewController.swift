@@ -23,6 +23,8 @@ class LoginViewController: UIViewController {
     let emailTextField = OneLineTextField(font: .avenir20())
     let passwordTextField = OneLineTextField(font: .avenir20())
     
+    weak var delegate: AuthNavigationDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customWhite
@@ -39,7 +41,9 @@ class LoginViewController: UIViewController {
         AuthService.shared.login(email: emailTextField.text, password: passwordTextField.text) { result in
             switch result {
             case .success(let user):
-                self.showAlert(with: "Успешно!", and: "Пользователь найден")
+                self.showAlert(with: "Успешно!", and: "Вы авторизованы") {
+                    self.present(MainTabBarController(), animated: true, completion: nil)
+                }
             case .failure(let error):
                 self.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
@@ -47,7 +51,9 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func signUpButtonPressed() {
-        print(#function)
+        dismiss(animated: true) {
+            self.delegate?.toSignUpVC()
+        }
     }
     
 }

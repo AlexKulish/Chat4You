@@ -27,18 +27,33 @@ class AuthViewController: UIViewController {
         view.backgroundColor = .customWhite
         setupConstraints()
         
+        loginVC.delegate = self
+        signUpVC.delegate = self
+        
         emailButton.addTarget(self, action: #selector(emailButtonPressed), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
     }
     
     @objc private func emailButtonPressed() {
-        print(#function)
         present(signUpVC, animated: true, completion: nil)
     }
     
     @objc private func loginButtonPressed() {
-        print(#function)
         present(loginVC, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - AuthNavigationDelegate
+
+extension AuthViewController: AuthNavigationDelegate {
+    
+    func toLoginVC() {
+        present(loginVC, animated: true, completion: nil)
+    }
+    
+    func toSignUpVC() {
+        present(signUpVC, animated: true, completion: nil)
     }
     
 }
