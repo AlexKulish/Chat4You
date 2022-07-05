@@ -54,6 +54,10 @@ extension SignUpViewController {
     
     private func setupConstraints() {
         
+        emailTextField.autocorrectionType = .no
+        passwordTextField.autocorrectionType = .no
+        confirmPasswordTextField.autocorrectionType = .no
+        
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 0)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 0)
         let confirmPasswordStackView = UIStackView(arrangedSubviews: [confirmPasswordLabel, confirmPasswordTextField], axis: .vertical, spacing: 0)

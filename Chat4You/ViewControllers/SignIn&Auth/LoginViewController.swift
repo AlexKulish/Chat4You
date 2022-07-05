@@ -58,6 +58,10 @@ extension LoginViewController {
     
     private func setupConstraints() {
         googleButton.costomizeGoogleButton()
+        
+        emailTextField.autocorrectionType = .no
+        passwordTextField.autocorrectionType = .no
+        
         let loginWithView = ButtonFormView(label: loginWithLabel, button: googleButton)
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 0)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 0)
