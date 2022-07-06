@@ -8,9 +8,22 @@
 import Foundation
 
 struct MUser: Hashable, Decodable {
-    var username: String
+    var id: String
+    var userName: String
+    var email: String
+    var description: String
+    var sex: String
     var avatarStringURL: String
-    var id: Int
+    
+    var representation: [String: Any] {
+        var dict = ["uid": id]
+        dict["userName"] = userName
+        dict["email"] = email
+        dict["description"] = description
+        dict["sex"] = sex
+        dict["avatarStringURL"] = avatarStringURL
+        return dict
+    }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -27,7 +40,7 @@ struct MUser: Hashable, Decodable {
         
         let lowercasedFilter = filter.lowercased()
         
-        return username.lowercased().contains(lowercasedFilter)
+        return userName.lowercased().contains(lowercasedFilter)
     }
     
 }

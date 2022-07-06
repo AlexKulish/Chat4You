@@ -23,6 +23,20 @@ class Validators {
         return true
     }
     
+    static func isFill(userName: String?, description: String?, sex: String?) -> Bool {
+        
+        guard let userName = userName,
+              let description = description,
+              let sex = sex,
+              userName != "",
+              description != "",
+              sex != "" else {
+                  return false
+              }
+        
+        return true
+    }
+    
     // объяснение как работает валидация www.advancedswift.com/regular-expressions/
     // еще один пример medium.com/swlh/password-validation-in-swift-5-3de161569910
     

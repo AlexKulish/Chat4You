@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5902A5CF2875C90F000A2605 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5902A5CE2875C90F000A2605 /* FirestoreService.swift */; };
+		5902A5D12875CC44000A2605 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5902A5D02875CC44000A2605 /* UserError.swift */; };
 		592F26AA286AFC3200C823F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 592F26A9286AFC3200C823F4 /* GoogleService-Info.plist */; };
 		592F26AD286AFE8000C823F4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 592F26AC286AFE8000C823F4 /* FirebaseAnalytics */; };
 		592F26AF286AFE8000C823F4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 592F26AE286AFE8000C823F4 /* FirebaseAuth */; };
@@ -59,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5902A5CE2875C90F000A2605 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		5902A5D02875CC44000A2605 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
 		592F26A9286AFC3200C823F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		592F26B7286B3BA300C823F4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		593242802859E6C9005FC4BF /* MChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MChat.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				592F26B7286B3BA300C823F4 /* AuthService.swift */,
+				5902A5CE2875C90F000A2605 /* FirestoreService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 			children = (
 				59915A85287440F0008D263E /* Validators.swift */,
 				59915A872874488F008D263E /* AuthError.swift */,
+				5902A5D02875CC44000A2605 /* UserError.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				59915A8A28748253008D263E /* AuthNavigationDelegate.swift in Sources */,
 				599C9C742848C785000F577F /* SetupProfileViewController.swift in Sources */,
 				5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */,
+				5902A5CF2875C90F000A2605 /* FirestoreService.swift in Sources */,
 				59C5002F28630EEF0051F3A9 /* ProfileViewController.swift in Sources */,
 				59324294285B6A2F005FC4BF /* SectionHeader.swift in Sources */,
 				59C500292860B8670051F3A9 /* MUser.swift in Sources */,
@@ -402,6 +409,7 @@
 				59D804F728479230006B75A2 /* UIStackView + Extension.swift in Sources */,
 				599C9C762848CA91000F577F /* AddPhotoView.swift in Sources */,
 				593242812859E6C9005FC4BF /* MChat.swift in Sources */,
+				5902A5D12875CC44000A2605 /* UserError.swift in Sources */,
 				59C5003128634C9A0051F3A9 /* CustomTextField.swift in Sources */,
 				5974D87828477FEE00EDE4E2 /* ButtonFormView.swift in Sources */,
 				59C50033286354840051F3A9 /* UIView + Extension.swift in Sources */,

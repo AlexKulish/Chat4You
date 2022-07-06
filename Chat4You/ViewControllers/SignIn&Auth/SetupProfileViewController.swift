@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SetupProfileViewController: UIViewController {
     
@@ -23,13 +24,43 @@ class SetupProfileViewController: UIViewController {
     
     let goToChatsButton = UIButton(title: "Go to chats!", titleColor: .white, backgroundColor: .customBlack)
     
+    private let currentUser: User
     
+    init(currentUser: User) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customWhite
         setupConstraints()
         setupNotificationKeyboardObservers()
+        
+        goToChatsButton.addTarget(self, action: #selector(goToChatsButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc private func goToChatsButtonPressed() {
+        
+        FirestoreService.shared.saveProfile(id: currentUser.uid,
+                                            email: currentUser.email ?? "",
+                                            userName: fullNameTextField.text,
+                                            avatarImageString: "nil",
+                                            description: aboutMeTextField.text,
+                                            sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { result in
+            switch result {
+            case .success(let user):
+                self.showAlert(with: "Успешно", and: "Приятного общения")
+                print(user)
+            case .failure(let error):
+                self.showAlert(with: "Ошибка!", and: error.localizedDescription)
+            }
+        }
+        
     }
     
 }

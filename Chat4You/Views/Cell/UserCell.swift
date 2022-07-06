@@ -62,7 +62,7 @@ class UserCell: UICollectionViewCell, ConfigureCellProtocol {
     func configure<U>(with value: U) where U : Hashable {
         guard let user = value as? MUser else { return }
         userImageView.image = UIImage(named: user.avatarStringURL)
-        userNameLabel.text = user.username
+        userNameLabel.text = user.userName
     }
     
 }
