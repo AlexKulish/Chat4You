@@ -40,11 +40,11 @@ class SignUpViewController: UIViewController {
         AuthService.shared.register(email: emailTextField.text, password: passwordTextField.text, confirmPassword: confirmPasswordTextField.text) { result in
             switch result {
             case .success(let user):
-                self.showAlert(with: "Успешно!", and: "Вы успешно зарегистрированы") {
+                self.showAlert(with: "Success!", and: "You have successfully registered") {
                     self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
                 }
             case .failure(let error):
-                self.showAlert(with: "Ошибка!", and: error.localizedDescription)
+                self.showAlert(with: "Error!", and: error.localizedDescription)
                 print(error.localizedDescription)
             }
         }

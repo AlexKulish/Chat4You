@@ -41,11 +41,18 @@ class LoginViewController: UIViewController {
         AuthService.shared.login(email: emailTextField.text, password: passwordTextField.text) { result in
             switch result {
             case .success(let user):
-                self.showAlert(with: "Успешно!", and: "Вы авторизованы") {
-                    self.present(MainTabBarController(), animated: true, completion: nil)
+                self.showAlert(with: "Success!", and: "You are logged in") {
+                    FirestoreService.shared.getUserData(user: user) { result in
+                        switch result {
+                        case .success(_):
+                            self.present(MainTabBarController(), animated: true, completion: nil)
+                        case .failure(_):
+                            self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
+                        }
+                    }
                 }
             case .failure(let error):
-                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+                self.showAlert(with: "Error!", and: error.localizedDescription)
             }
         }
     }

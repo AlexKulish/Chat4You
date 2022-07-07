@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PeopleViewController: UIViewController {
     
-    let users = Bundle.main.decode([MUser].self, from: "users.json")
+//    let users = Bundle.main.decode([MUser].self, from: "users.json")
+    let users = [MUser]()
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, MUser>?
@@ -32,6 +34,8 @@ class PeopleViewController: UIViewController {
         setupCollectionView()
         setupDataSource()
         reloadData(with: nil)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logoutButtonPressed))
     }
     
     private func setupCollectionView() {
@@ -63,6 +67,24 @@ class PeopleViewController: UIViewController {
         snapshot.appendSections([.users])
         snapshot.appendItems(filteredUsers, toSection: .users)
         dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+    
+    @objc private func logoutButtonPressed() {
+        let alert = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { _ in
+            do {
+                try Auth.auth().signOut()
+                UIApplication.shared.keyWindow?.rootViewController = AuthViewController()
+            } catch {
+                print("Error logout \(error.localizedDescription)")
+            }
+        }
+        let noAction = UIAlertAction(title: "No", style: .default)
+        
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        
+        present(alert, animated: true, completion: nil)
     }
     
 }

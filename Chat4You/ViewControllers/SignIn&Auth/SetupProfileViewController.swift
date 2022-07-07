@@ -53,11 +53,13 @@ class SetupProfileViewController: UIViewController {
                                             description: aboutMeTextField.text,
                                             sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { result in
             switch result {
-            case .success(let user):
-                self.showAlert(with: "Успешно", and: "Приятного общения")
-                print(user)
+            case .success(let mUser):
+                self.showAlert(with: "Success!", and: "Have a nice chat ;)") {
+                    self.present(MainTabBarController(), animated: true, completion: nil)
+                }
+                print(mUser)
             case .failure(let error):
-                self.showAlert(with: "Ошибка!", and: error.localizedDescription)
+                self.showAlert(with: "Error!", and: error.localizedDescription)
             }
         }
         
