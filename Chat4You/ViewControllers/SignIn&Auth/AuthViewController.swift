@@ -26,6 +26,7 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .customWhite
         setupConstraints()
+        setupPresentationStyleForVC()
         
         loginVC.delegate = self
         signUpVC.delegate = self
@@ -40,6 +41,11 @@ class AuthViewController: UIViewController {
     
     @objc private func loginButtonPressed() {
         present(loginVC, animated: true, completion: nil)
+    }
+    
+    private func setupPresentationStyleForVC() {
+        loginVC.modalPresentationStyle = .fullScreen
+        signUpVC.modalPresentationStyle = .fullScreen
     }
     
 }

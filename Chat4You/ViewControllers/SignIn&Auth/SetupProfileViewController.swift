@@ -55,7 +55,9 @@ class SetupProfileViewController: UIViewController {
             switch result {
             case .success(let mUser):
                 self.showAlert(with: "Success!", and: "Have a nice chat ;)") {
-                    self.present(MainTabBarController(), animated: true, completion: nil)
+                    let mainTabBarVC = MainTabBarController(currentUser: mUser)
+                    mainTabBarVC.modalPresentationStyle = .fullScreen
+                    self.present(mainTabBarVC, animated: true, completion: nil)
                 }
                 print(mUser)
             case .failure(let error):
@@ -72,6 +74,9 @@ class SetupProfileViewController: UIViewController {
 extension SetupProfileViewController {
     
     private func setupConstraints() {
+        
+        fullNameTextField.autocorrectionType = .no
+        aboutMeTextField.autocorrectionType = .no
         
         let fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel, fullNameTextField], axis: .vertical, spacing: 0)
         let aboutMeStackView = UIStackView(arrangedSubviews: [aboutMeLabel, aboutMeTextField], axis: .vertical, spacing: 0)

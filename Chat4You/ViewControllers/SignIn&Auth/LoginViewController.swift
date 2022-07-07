@@ -36,7 +36,6 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func loginButtonPressed() {
-        print(#function)
         
         AuthService.shared.login(email: emailTextField.text, password: passwordTextField.text) { result in
             switch result {
@@ -44,10 +43,14 @@ class LoginViewController: UIViewController {
                 self.showAlert(with: "Success!", and: "You are logged in") {
                     FirestoreService.shared.getUserData(user: user) { result in
                         switch result {
-                        case .success(_):
-                            self.present(MainTabBarController(), animated: true, completion: nil)
+                        case .success(let mUser):
+                            let mainTabBarVC = MainTabBarController(currentUser: mUser)
+                            mainTabBarVC.modalPresentationStyle = .fullScreen
+                            self.present(mainTabBarVC, animated: true, completion: nil)
                         case .failure(_):
-                            self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
+                            let setupProfileVC = SetupProfileViewController(currentUser: user)
+                            setupProfileVC.modalPresentationStyle = .fullScreen
+                            self.present(setupProfileVC, animated: true, completion: nil)
                         }
                     }
                 }

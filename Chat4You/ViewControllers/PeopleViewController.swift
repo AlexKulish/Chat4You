@@ -12,6 +12,7 @@ class PeopleViewController: UIViewController {
     
 //    let users = Bundle.main.decode([MUser].self, from: "users.json")
     let users = [MUser]()
+    private let currentUser: MUser
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, MUser>?
@@ -25,6 +26,16 @@ class PeopleViewController: UIViewController {
                 return "\(usersCount) people nearly"
             }
         }
+    }
+    
+    init(currentUser: MUser) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+        title = currentUser.userName
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
