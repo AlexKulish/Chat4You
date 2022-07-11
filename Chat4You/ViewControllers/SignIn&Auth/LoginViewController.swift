@@ -33,6 +33,7 @@ class LoginViewController: UIViewController {
         
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonPressed), for: .touchUpInside)
     }
     
     @objc private func loginButtonPressed() {
@@ -40,7 +41,7 @@ class LoginViewController: UIViewController {
         AuthService.shared.login(email: emailTextField.text, password: passwordTextField.text) { result in
             switch result {
             case .success(let user):
-                self.showAlert(with: "Success!", and: "You are logged in") {
+                self.showAlert(with: "Success!", and: "You are logged in!") {
                     FirestoreService.shared.getUserData(user: user) { result in
                         switch result {
                         case .success(let mUser):
@@ -48,6 +49,32 @@ class LoginViewController: UIViewController {
                             mainTabBarVC.modalPresentationStyle = .fullScreen
                             self.present(mainTabBarVC, animated: true, completion: nil)
                         case .failure(_):
+                            let setupProfileVC = SetupProfileViewController(currentUser: user)
+                            setupProfileVC.modalPresentationStyle = .fullScreen
+                            self.present(setupProfileVC, animated: true, completion: nil)
+                        }
+                    }
+                }
+            case .failure(let error):
+                self.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        }
+    }
+    
+    @objc private func googleButtonPressed() {
+        AuthService.shared.loginWithGoogle(viewController: self) { result in
+            switch result {
+            case .success(let user):
+                FirestoreService.shared.getUserData(user: user) { result in
+                    switch result {
+                    case .success(let mUser):
+                        self.showAlert(with: "Success!", and: "You are logged in!") {
+                            let mainTabBarVC = MainTabBarController(currentUser: mUser)
+                            mainTabBarVC.modalPresentationStyle = .fullScreen
+                            self.present(mainTabBarVC, animated: true, completion: nil)
+                        }
+                    case .failure(_):
+                        self.showAlert(with: "Success!", and: "You have successfully registered!") {
                             let setupProfileVC = SetupProfileViewController(currentUser: user)
                             setupProfileVC.modalPresentationStyle = .fullScreen
                             self.present(setupProfileVC, animated: true, completion: nil)

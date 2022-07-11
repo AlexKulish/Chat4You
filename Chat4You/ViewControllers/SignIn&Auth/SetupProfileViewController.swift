@@ -29,6 +29,12 @@ class SetupProfileViewController: UIViewController {
     init(currentUser: User) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
+        
+        if let userName = currentUser.displayName {
+            fullNameTextField.text = userName
+        }
+        
+        // TODO Set google image
     }
     
     required init?(coder: NSCoder) {

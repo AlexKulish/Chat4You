@@ -33,6 +33,7 @@ class AuthViewController: UIViewController {
         
         emailButton.addTarget(self, action: #selector(emailButtonPressed), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonPressed), for: .touchUpInside)
     }
     
     @objc private func emailButtonPressed() {
@@ -41,6 +42,32 @@ class AuthViewController: UIViewController {
     
     @objc private func loginButtonPressed() {
         present(loginVC, animated: true, completion: nil)
+    }
+    
+    @objc private func googleButtonPressed() {
+        AuthService.shared.loginWithGoogle(viewController: self) { result in
+            switch result {
+            case .success(let user):
+                FirestoreService.shared.getUserData(user: user) { result in
+                    switch result {
+                    case .success(let mUser):
+                        self.showAlert(with: "Success!", and: "You are logged in!") {
+                            let mainTabBarVC = MainTabBarController(currentUser: mUser)
+                            mainTabBarVC.modalPresentationStyle = .fullScreen
+                            self.present(mainTabBarVC, animated: true, completion: nil)
+                        }
+                    case .failure(_):
+                        self.showAlert(with: "Success!", and: "You have successfully registered!") {
+                            let setupProfileVC = SetupProfileViewController(currentUser: user)
+                            setupProfileVC.modalPresentationStyle = .fullScreen
+                            self.present(setupProfileVC, animated: true, completion: nil)
+                        }
+                    }
+                }
+            case .failure(let error):
+                self.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        }
     }
     
     private func setupPresentationStyleForVC() {

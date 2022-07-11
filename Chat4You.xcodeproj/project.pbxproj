@@ -128,7 +128,6 @@
 				6125882BAFB1CDE5022FB602 /* Pods-Chat4You.debug.xcconfig */,
 				2E42AE715BB7907EF668A151 /* Pods-Chat4You.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
