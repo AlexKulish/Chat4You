@@ -38,27 +38,40 @@ class FirestoreService {
         
     }
     
-    func saveProfile(id: String, email: String, userName: String?, avatarImageString: String?, description: String?, sex: String?, completion: @escaping (Result<MUser, Error>) -> Void) {
+    func saveProfile(id: String, email: String, userName: String?, avatarImage: UIImage?, description: String?, sex: String?, completion: @escaping (Result<MUser, Error>) -> Void) {
         
         guard Validators.isFill(userName: userName, description: description, sex: sex) else {
             completion(.failure(UserError.notFill))
             return
         }
         
-        let mUser = MUser(id: id,
-                          userName: userName!,
-                          email: email,
-                          description: description!,
-                          sex: sex!,
-                          avatarStringURL: "avatarImageString")
+        guard avatarImage != UIImage(named: "avatar") else {
+            completion(.failure(UserError.photoNotExist))
+            return
+        }
         
-        usersRef.document(mUser.id).setData(mUser.representation) { error in
-            if let error = error {
+        StorageService.shared.upload(avatar: avatarImage!) { result in
+            switch result {
+            case .success(let avatarUrl):
+                let mUser = MUser(id: id,
+                                  userName: userName ?? "",
+                                  email: email,
+                                  description: description ?? "",
+                                  sex: sex ?? "",
+                                  avatarStringURL: avatarUrl.absoluteString)
+                self.usersRef.document(mUser.id).setData(mUser.representation) { error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(mUser))
+                    }
+                }
+            case .failure(let error):
                 completion(.failure(error))
-            } else {
-                completion(.success(mUser))
             }
         }
+        
+        
     }
     
 }
