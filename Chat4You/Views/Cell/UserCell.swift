@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UserCell: UICollectionViewCell, ConfigureCellProtocol {
     
@@ -47,6 +48,10 @@ class UserCell: UICollectionViewCell, ConfigureCellProtocol {
         containerView.clipsToBounds = true
     }
     
+    override func prepareForReuse() {
+        userImageView.image = nil
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -61,7 +66,8 @@ class UserCell: UICollectionViewCell, ConfigureCellProtocol {
     
     func configure<U>(with value: U) where U : Hashable {
         guard let user = value as? MUser else { return }
-        userImageView.image = UIImage(named: user.avatarStringURL)
+        guard let url = URL(string: user.avatarStringURL) else { return }
+        userImageView.sd_setImage(with: url, completed: nil)
         userNameLabel.text = user.userName
     }
     
