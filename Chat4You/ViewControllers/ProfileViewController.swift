@@ -134,7 +134,14 @@ extension ProfileViewController {
         guard let message = textField.text, message != "" else { return }
         
         self.dismiss(animated: true) {
-            UIApplication.getTopViewController()?.showAlert(with: "Test", and: "123124")
+            FirestoreService.shared.createWaitingChat(message: message, receiver: self.user) { result in
+                switch result {
+                case .success():
+                    UIApplication.getTopViewController()?.showAlert(with: "Success", and: "Your message for \(self.user.userName) has been delivered")
+                case .failure(let error):
+                    UIApplication.getTopViewController()?.showAlert(with: "Error", and: error.localizedDescription)
+                }
+            }
         }
     }
     

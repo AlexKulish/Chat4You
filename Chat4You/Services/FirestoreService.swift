@@ -75,18 +75,32 @@ class FirestoreService {
         }
     }
     
-//    func createWaitingChat(message: String, receiver: MUser, completion: @escaping (Result<Void, Error>) -> Void) {
-//
-//        let waitingChatsReference = db.collection(["users", receiver.id, "waitingChats"].joined(separator: "/"))
-//        let messageReference = waitingChatsReference.document(currentUser.id).collection("messages")
-//
-//        let chat = MChat(friendUserName: currentUser.userName,
-//                         friendUserImageStringURL: currentUser.avatarStringURL,
-//                         lastMessage: currentUser,
-//                         friendId: currentUser.id)
-//
-//        waitingChatsReference.document(currentUser.id).setData(<#T##documentData: [String : Any]##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
-//        
-//    }
+    func createWaitingChat(message: String, receiver: MUser, completion: @escaping (Result<Void, Error>) -> Void) {
+
+        let waitingChatsReference = db.collection(["users", receiver.id, "waitingChats"].joined(separator: "/"))
+        let messageReference = waitingChatsReference.document(currentUser.id).collection("messages")
+        
+        let message = MMessage(user: currentUser, content: message)
+        
+        let chat = MChat(friendUserName: currentUser.userName,
+                         friendUserImageStringURL: currentUser.avatarStringURL,
+                         lastMessage: message.content,
+                         friendId: currentUser.id)
+
+        waitingChatsReference.document(currentUser.id).setData(chat.representation) { error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            messageReference.addDocument(data: message.representation) { error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                completion(.success(Void()))
+            }
+        }
+        
+    }
     
 }

@@ -57,6 +57,7 @@
 		59D804FB2847A0CB006B75A2 /* OneLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */; };
 		59DC46F82865E6BA00E07D6F /* ChatRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DC46F72865E6BA00E07D6F /* ChatRequestViewController.swift */; };
 		59FCC4B72880204900BFA480 /* UIApplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCC4B62880204900BFA480 /* UIApplication + Extension.swift */; };
+		59FCC4B928802B8300BFA480 /* MMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCC4B828802B8300BFA480 /* MMessage.swift */; };
 		EBF9B116647CB7E0ABBF50CE /* Pods_Chat4You.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C365BAC91F61D62A763CFC77 /* Pods_Chat4You.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,7 @@
 		59D804FA2847A0CB006B75A2 /* OneLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextField.swift; sourceTree = "<group>"; };
 		59DC46F72865E6BA00E07D6F /* ChatRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestViewController.swift; sourceTree = "<group>"; };
 		59FCC4B62880204900BFA480 /* UIApplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Extension.swift"; sourceTree = "<group>"; };
+		59FCC4B828802B8300BFA480 /* MMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMessage.swift; sourceTree = "<group>"; };
 		6125882BAFB1CDE5022FB602 /* Pods-Chat4You.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat4You.debug.xcconfig"; path = "Target Support Files/Pods-Chat4You/Pods-Chat4You.debug.xcconfig"; sourceTree = "<group>"; };
 		C365BAC91F61D62A763CFC77 /* Pods_Chat4You.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat4You.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 			children = (
 				593242802859E6C9005FC4BF /* MChat.swift */,
 				59C500282860B8670051F3A9 /* MUser.swift */,
+				59FCC4B828802B8300BFA480 /* MMessage.swift */,
 				593242822859E6F2005FC4BF /* waitingChats.json */,
 				593242842859E6FA005FC4BF /* activeChats.json */,
 				59C500262860B7D50051F3A9 /* users.json */,
@@ -485,6 +488,7 @@
 				5974D8712846726600EDE4E2 /* UIColor + Extension.swift in Sources */,
 				5932428E285B63B5005FC4BF /* WaitingChatCell.swift in Sources */,
 				5974D8542846396100EDE4E2 /* SceneDelegate.swift in Sources */,
+				59FCC4B928802B8300BFA480 /* MMessage.swift in Sources */,
 				5932428A2859FD89005FC4BF /* ActiveChatCell.swift in Sources */,
 				592F26B8286B3BA300C823F4 /* AuthService.swift in Sources */,
 				599C9C722848B3A3000F577F /* LoginViewController.swift in Sources */,
