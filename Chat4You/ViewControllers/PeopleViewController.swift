@@ -25,7 +25,7 @@ class PeopleViewController: UIViewController {
         func description(usersCount: Int) -> String {
             switch self {
             case .users:
-                return "\(usersCount) people nearly"
+                return "\(usersCount) users in app"
             }
         }
     }
@@ -207,6 +207,11 @@ extension PeopleViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         reloadData(with: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        reloadData(with: nil)
     }
     
 }
