@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileViewController: UIViewController {
+    
+    private let user: MUser
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -45,6 +48,19 @@ class ProfileViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
+    
+    init(user: MUser) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+        self.nameLabel.text = user.userName
+        self.aboutMeLabel.text = user.description
+        guard let url = URL(string: user.avatarStringURL) else { return }
+        self.userImageView.sd_setImage(with: url, completed: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,12 +127,15 @@ extension ProfileViewController {
     
     private func getButton() {
         guard let rightButton = textField.rightView as? UIButton else { return }
-        rightButton.addTarget(self, action: #selector(rightButtonPressed), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
     }
     
-    @objc private func rightButtonPressed() {
-        aboutMeLabel.text = textField.text
-        textField.text = nil
+    @objc private func sendMessage() {
+        guard let message = textField.text, message != "" else { return }
+        
+        self.dismiss(animated: true) {
+            UIApplication.getTopViewController()?.showAlert(with: "Test", and: "123124")
+        }
     }
     
 }
