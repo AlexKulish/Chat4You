@@ -1,21 +1,19 @@
 //
-//  ListViewController.swift
+//  ConversationViewController.swift
 //  Chat4You
 //
 //  Created by Alex Kulish on 02.06.2022.
 //
 
 import UIKit
+import FirebaseFirestore
 
-
-
-class ListViewController: UIViewController {
+class ConversationViewController: UIViewController {
     
-//    let activeChats = Bundle.main.decode([MChat].self, from: "activeChats.json")
-//    let waitingChats = Bundle.main.decode([MChat].self, from: "waitingChats.json")
     let activeChats = [MChat]()
-    let waitingChats = [MChat]()
+    private var waitingChats = [MChat]()
     private let currentUser: MUser
+    private var waitingChatsListener: ListenerRegistration?
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, MChat>?
@@ -43,6 +41,10 @@ class ListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        waitingChatsListener?.remove()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customWhite
@@ -50,6 +52,7 @@ class ListViewController: UIViewController {
         setupSearchBar()
         setupDataSource()
         reloadData()
+        setupWaitingChatsListener()
     }
     
     private func setupCollectionView() {
@@ -81,11 +84,24 @@ class ListViewController: UIViewController {
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
+    private func setupWaitingChatsListener() {
+        
+        waitingChatsListener = ListenerService.shared.waitingChatsObserve(chats: waitingChats, completion: { result in
+            switch result {
+            case .success(let waitingChats):
+                self.waitingChats = waitingChats
+                self.reloadData()
+            case .failure(let error):
+                self.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        })
+    }
+    
 }
 
 // MARK: - DataSource
 
-extension ListViewController {
+extension ConversationViewController {
     
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, MChat>(collectionView: collectionView, cellProvider: { collectionView, indexPath, chat in
@@ -116,7 +132,7 @@ extension ListViewController {
 
 // MARK: - Setup layout
 
-extension ListViewController {
+extension ConversationViewController {
     
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
@@ -187,7 +203,7 @@ extension ListViewController {
 
 // MARK: - UISearchBarDelegate
 
-extension ListViewController: UISearchBarDelegate {
+extension ConversationViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)

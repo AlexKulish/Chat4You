@@ -39,7 +39,7 @@
 		599C9C742848C785000F577F /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C732848C785000F577F /* SetupProfileViewController.swift */; };
 		599C9C762848CA91000F577F /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C752848CA91000F577F /* AddPhotoView.swift */; };
 		599C9C782848EBC4000F577F /* SegmentedControl + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C772848EBC4000F577F /* SegmentedControl + Extension.swift */; };
-		599C9C7A2848F620000F577F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C792848F620000F577F /* ListViewController.swift */; };
+		599C9C7A2848F620000F577F /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C792848F620000F577F /* ConversationViewController.swift */; };
 		599C9C7D2848F994000F577F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C7C2848F994000F577F /* MainTabBarController.swift */; };
 		599C9C7F2848FA52000F577F /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599C9C7E2848FA52000F577F /* PeopleViewController.swift */; };
 		59B01B57287D81B700A0F752 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B01B56287D81B700A0F752 /* StorageService.swift */; };
@@ -97,7 +97,7 @@
 		599C9C732848C785000F577F /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
 		599C9C752848CA91000F577F /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		599C9C772848EBC4000F577F /* SegmentedControl + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SegmentedControl + Extension.swift"; sourceTree = "<group>"; };
-		599C9C792848F620000F577F /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		599C9C792848F620000F577F /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		599C9C7C2848F994000F577F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		599C9C7E2848FA52000F577F /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		59B01B56287D81B700A0F752 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 			children = (
 				599C9C7B2848F8B4000F577F /* SignIn&Auth */,
 				599C9C7C2848F994000F577F /* MainTabBarController.swift */,
-				599C9C792848F620000F577F /* ListViewController.swift */,
+				599C9C792848F620000F577F /* ConversationViewController.swift */,
 				599C9C7E2848FA52000F577F /* PeopleViewController.swift */,
 				59C5002E28630EEF0051F3A9 /* ProfileViewController.swift */,
 				59DC46F72865E6BA00E07D6F /* ChatRequestViewController.swift */,
@@ -449,7 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				599C9C7A2848F620000F577F /* ListViewController.swift in Sources */,
+				599C9C7A2848F620000F577F /* ConversationViewController.swift in Sources */,
 				5932428C285B2F68005FC4BF /* GradientView.swift in Sources */,
 				59D804FB2847A0CB006B75A2 /* OneLineTextField.swift in Sources */,
 				59324291285B677F005FC4BF /* ConfigureCellProtocol.swift in Sources */,

@@ -58,4 +58,39 @@ class ListenerService {
         return usersListener
     }
     
+    func waitingChatsObserve(chats: [MChat], completion: @escaping (Result <[MChat], Error>) -> Void) -> ListenerRegistration? {
+        
+        var chats = chats
+        
+        let chatsRef = db.collection(["users", currentUserId, "waitingChats"].joined(separator: "/"))
+        
+        let chatsListener = chatsRef.addSnapshotListener { querySnapshot, error in
+            
+            guard let querySnapshot = querySnapshot else {
+                completion(.failure(error!))
+                return
+            }
+            
+            querySnapshot.documentChanges.forEach { documentChange in
+                guard let mChat = MChat(document: documentChange.document) else {
+                    completion(.failure(error!))
+                    return
+                }
+                switch documentChange.type {
+                case .added:
+                    guard !chats.contains(mChat) else { return }
+                    chats.append(mChat)
+                case .modified:
+                    guard let index = chats.firstIndex(of: mChat) else { return }
+                    chats[index] = mChat
+                case .removed:
+                    guard let index = chats.firstIndex(of: mChat) else { return }
+                    chats.remove(at: index)
+                }
+            }
+            completion(.success(chats))
+        }
+        return chatsListener
+    }
+    
 }

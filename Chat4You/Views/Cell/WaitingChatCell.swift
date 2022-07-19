@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class WaitingChatCell: UICollectionViewCell, ConfigureCellProtocol {
     
@@ -31,7 +32,8 @@ class WaitingChatCell: UICollectionViewCell, ConfigureCellProtocol {
     
     func configure<U>(with value: U) where U : Hashable {
         guard let chat = value as? MChat else { return }
-        friendImageView.image = UIImage(named: chat.friendUserImageStringURL)
+        guard let url = URL(string: chat.friendUserImageStringURL) else { return }
+        friendImageView.sd_setImage(with: url, completed: nil)
     }
 }
 

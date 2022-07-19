@@ -24,7 +24,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         let peopleVC = PeopleViewController(currentUser: currentUser)
-        let listVC = ListViewController(currentUser: currentUser)
+        let listVC = ConversationViewController(currentUser: currentUser)
         
         tabBar.tintColor = .customPurple
         let boldConfiguration = UIImage.SymbolConfiguration(weight: .medium)
