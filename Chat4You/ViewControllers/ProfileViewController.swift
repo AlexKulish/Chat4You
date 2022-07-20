@@ -24,20 +24,23 @@ class ProfileViewController: UIViewController {
     }()
     
     private lazy var userImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "human4"), contentMode: .scaleAspectFill)
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private lazy var nameLabel: UILabel = {
-        let label = UILabel(text: "Alex Kulish", font: .systemFont(ofSize: 20, weight: .light))
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
     }()
     
     private lazy var aboutMeLabel: UILabel = {
-        let label = UILabel(text: "Hello, my name is Alex", font: .systemFont(ofSize: 16, weight: .light))
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         return label

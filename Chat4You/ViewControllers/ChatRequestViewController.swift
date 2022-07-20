@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ChatRequestViewController: UIViewController {
+    
+    weak var delegate: WaitingChatsDelegate?
+    
+    private let chat: MChat
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -21,20 +26,23 @@ class ChatRequestViewController: UIViewController {
     }()
     
     private lazy var userImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "human4"), contentMode: .scaleAspectFill)
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private lazy var nameLabel: UILabel = {
-        let label = UILabel(text: "Alex Kulish", font: .systemFont(ofSize: 20, weight: .light))
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
     }()
     
     private lazy var aboutMeLabel: UILabel = {
-        let label = UILabel(text: "Hello, my name is Alex", font: .systemFont(ofSize: 16, weight: .light))
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         return label
@@ -42,6 +50,7 @@ class ChatRequestViewController: UIViewController {
     
     private lazy var acceptButton: UIButton = {
         let button = UIButton(title: "ACCEPT", titleColor: .white, backgroundColor: .clear, font: .laoSangamMN20(), cornerRadius: 10)
+        button.addTarget(self, action: #selector(acceptButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -49,6 +58,7 @@ class ChatRequestViewController: UIViewController {
         let button = UIButton(title: "Deny", titleColor: #colorLiteral(red: 0.8756850362, green: 0.2895075083, blue: 0.2576965988, alpha: 1), backgroundColor: .customWhite, font: .laoSangamMN20(), cornerRadius: 10)
         button.layer.borderWidth = 1.2
         button.layer.borderColor = #colorLiteral(red: 0.8352941176, green: 0.2, blue: 0.2, alpha: 1)
+        button.addTarget(self, action: #selector(denyButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -58,6 +68,19 @@ class ChatRequestViewController: UIViewController {
         stackView.distribution = .fillEqually
         return stackView
     }()
+    
+    init(chat: MChat) {
+        self.chat = chat
+        super.init(nibName: nil, bundle: nil)
+        nameLabel.text = chat.friendUserName
+        aboutMeLabel.text = chat.lastMessage
+        guard let url = URL(string: chat.friendUserImageStringURL) else { return }
+        userImageView.sd_setImage(with: url, completed: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +94,17 @@ class ChatRequestViewController: UIViewController {
         acceptButton.applyGradients(with: 10)
     }
     
+    @objc private func acceptButtonPressed() {
+        self.dismiss(animated: true) {
+            self.delegate?.chatToActive(chat: self.chat)
+        }
+    }
+    
+    @objc private func denyButtonPressed() {
+        self.dismiss(animated: true) {
+            self.delegate?.removeWaitingChat(chat: self.chat)
+        }
+    }
 }
 
 // MARK: - Setup contraints

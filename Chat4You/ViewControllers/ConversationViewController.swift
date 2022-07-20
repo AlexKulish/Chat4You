@@ -65,6 +65,8 @@ class ConversationViewController: UIViewController {
         
         collectionView.register(ActiveChatCell.self, forCellWithReuseIdentifier: ActiveChatCell.reuseId)
         collectionView.register(WaitingChatCell.self, forCellWithReuseIdentifier: WaitingChatCell.reuseId)
+        
+        collectionView.delegate = self
     }
     
     private func setupSearchBar() {
@@ -89,6 +91,14 @@ class ConversationViewController: UIViewController {
         waitingChatsListener = ListenerService.shared.waitingChatsObserve(chats: waitingChats, completion: { result in
             switch result {
             case .success(let waitingChats):
+                // баг: если у человека нет ожидающего чата ему не придет уведомление
+                // решение: попробовать сохранять чаты в UserDefaults а потом сравнивать с базой Firestore
+                if self.waitingChats != [], self.waitingChats.count <= waitingChats.count {
+                    guard let lastWaitingChat = waitingChats.last else { return }
+                    let chatRequestVC = ChatRequestViewController(chat: lastWaitingChat)
+                    chatRequestVC.delegate = self
+                    self.present(chatRequestVC, animated: true, completion: nil)
+                }
                 self.waitingChats = waitingChats
                 self.reloadData()
             case .failure(let error):
@@ -207,6 +217,48 @@ extension ConversationViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension ConversationViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let chat = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        guard let section = Section(rawValue: indexPath.section) else { return }
+        switch section {
+        case .waitingChats:
+            let chatRequestVC = ChatRequestViewController(chat: chat)
+            chatRequestVC.delegate = self
+            present(chatRequestVC, animated: true, completion: nil)
+        case .activeChats:
+            print(indexPath)
+//            let profileVC = ProfileViewController(user: chat)
+//            present(profileVC, animated: true, completion: nil)
+        }
+    }
+    
+}
+
+// MARK: - WaitingChatsDelegate
+
+extension ConversationViewController: WaitingChatsDelegate {
+    
+    func removeWaitingChat(chat: MChat) {
+        FirestoreService.shared.deleteWaitingChat(chat: chat) { result in
+            switch result {
+            case .success():
+                self.showAlert(with: "Success!", and: "Chat with \(chat.friendUserName) was delete.")
+            case .failure(let error):
+                self.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        }
+    }
+    
+    func chatToActive(chat: MChat) {
+        print(#function)
     }
     
 }
