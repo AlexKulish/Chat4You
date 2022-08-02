@@ -9,5 +9,5 @@ import Foundation
 
 protocol WaitingChatsDelegate: AnyObject {
     func removeWaitingChat(chat: MChat)
-    func chatToActive(chat: MChat)
+    func changeChatToActive(chat: MChat)
 }

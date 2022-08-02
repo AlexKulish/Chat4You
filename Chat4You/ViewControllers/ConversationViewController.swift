@@ -10,10 +10,11 @@ import FirebaseFirestore
 
 class ConversationViewController: UIViewController {
     
-    let activeChats = [MChat]()
+    private var activeChats = [MChat]()
     private var waitingChats = [MChat]()
     private let currentUser: MUser
     private var waitingChatsListener: ListenerRegistration?
+    private var activeChatsListener: ListenerRegistration?
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, MChat>?
@@ -43,6 +44,7 @@ class ConversationViewController: UIViewController {
     
     deinit {
         waitingChatsListener?.remove()
+        activeChatsListener?.remove()
     }
     
     override func viewDidLoad() {
@@ -53,6 +55,7 @@ class ConversationViewController: UIViewController {
         setupDataSource()
         reloadData()
         setupWaitingChatsListener()
+        setupActiveChatsListener()
     }
     
     private func setupCollectionView() {
@@ -105,6 +108,20 @@ class ConversationViewController: UIViewController {
                 self.showAlert(with: "Error!", and: error.localizedDescription)
             }
         })
+    }
+    
+    private func setupActiveChatsListener() {
+        
+        activeChatsListener = ListenerService.shared.activeChatsObserve(chats: activeChats, completion: { [weak self] result in
+            switch result {
+            case .success(let activeChats):
+                self?.activeChats = activeChats
+                self?.reloadData()
+            case .failure(let error):
+                self?.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        })
+        
     }
     
 }
@@ -235,8 +252,7 @@ extension ConversationViewController: UICollectionViewDelegate {
             present(chatRequestVC, animated: true, completion: nil)
         case .activeChats:
             print(indexPath)
-//            let profileVC = ProfileViewController(user: chat)
-//            present(profileVC, animated: true, completion: nil)
+            
         }
     }
     
@@ -257,8 +273,15 @@ extension ConversationViewController: WaitingChatsDelegate {
         }
     }
     
-    func chatToActive(chat: MChat) {
-        print(#function)
+    func changeChatToActive(chat: MChat) {
+        FirestoreService.shared.changeChatToActive(chat: chat) { [weak self] result in
+            switch result {
+            case .success():
+                self?.showAlert(with: "Success!", and: "Have a nice chat with \(chat.friendUserName).")
+            case .failure(let error):
+                self?.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        }
     }
     
 }
