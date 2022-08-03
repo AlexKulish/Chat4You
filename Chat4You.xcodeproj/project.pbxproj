@@ -12,8 +12,6 @@
 		592F26AA286AFC3200C823F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 592F26A9286AFC3200C823F4 /* GoogleService-Info.plist */; };
 		592F26B8286B3BA300C823F4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592F26B7286B3BA300C823F4 /* AuthService.swift */; };
 		593242812859E6C9005FC4BF /* MChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593242802859E6C9005FC4BF /* MChat.swift */; };
-		593242832859E6F2005FC4BF /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 593242822859E6F2005FC4BF /* waitingChats.json */; };
-		593242852859E6FA005FC4BF /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 593242842859E6FA005FC4BF /* activeChats.json */; };
 		593242872859E73F005FC4BF /* Bundle + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593242862859E73F005FC4BF /* Bundle + Extension.swift */; };
 		5932428A2859FD89005FC4BF /* ActiveChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593242892859FD89005FC4BF /* ActiveChatCell.swift */; };
 		5932428C285B2F68005FC4BF /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5932428B285B2F68005FC4BF /* GradientView.swift */; };
@@ -47,7 +45,6 @@
 		59B01B57287D81B700A0F752 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B01B56287D81B700A0F752 /* StorageService.swift */; };
 		59B01B59287D877E00A0F752 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B01B58287D877E00A0F752 /* UIImage + Extension.swift */; };
 		59B01B5B287EDAB600A0F752 /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B01B5A287EDAB600A0F752 /* ListenerService.swift */; };
-		59C500272860B7D50051F3A9 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 59C500262860B7D50051F3A9 /* users.json */; };
 		59C500292860B8670051F3A9 /* MUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C500282860B8670051F3A9 /* MUser.swift */; };
 		59C5002B2860C98F0051F3A9 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C5002A2860C98F0051F3A9 /* UserCell.swift */; };
 		59C5002D2860CB4B0051F3A9 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C5002C2860CB4B0051F3A9 /* UIViewController + Extension.swift */; };
@@ -71,8 +68,6 @@
 		592F26A9286AFC3200C823F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		592F26B7286B3BA300C823F4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		593242802859E6C9005FC4BF /* MChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MChat.swift; sourceTree = "<group>"; };
-		593242822859E6F2005FC4BF /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
-		593242842859E6FA005FC4BF /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
 		593242862859E73F005FC4BF /* Bundle + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle + Extension.swift"; sourceTree = "<group>"; };
 		593242892859FD89005FC4BF /* ActiveChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatCell.swift; sourceTree = "<group>"; };
 		5932428B285B2F68005FC4BF /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -108,7 +103,6 @@
 		59B01B56287D81B700A0F752 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		59B01B58287D877E00A0F752 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		59B01B5A287EDAB600A0F752 /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
-		59C500262860B7D50051F3A9 /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		59C500282860B8670051F3A9 /* MUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUser.swift; sourceTree = "<group>"; };
 		59C5002A2860C98F0051F3A9 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		59C5002C2860CB4B0051F3A9 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -162,9 +156,6 @@
 				593242802859E6C9005FC4BF /* MChat.swift */,
 				59C500282860B8670051F3A9 /* MUser.swift */,
 				59FCC4B828802B8300BFA480 /* MMessage.swift */,
-				593242822859E6F2005FC4BF /* waitingChats.json */,
-				593242842859E6FA005FC4BF /* activeChats.json */,
-				59C500262860B7D50051F3A9 /* users.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +199,25 @@
 				595B27C3289A6ECF0054363C /* ChatViewController.swift */,
 			);
 			path = Chats;
+			sourceTree = "<group>";
+		};
+		595B27C5289A7D4C0054363C /* Profile&ChatRequest */ = {
+			isa = PBXGroup;
+			children = (
+				59DC46F72865E6BA00E07D6F /* ChatRequestViewController.swift */,
+				59C5002E28630EEF0051F3A9 /* ProfileViewController.swift */,
+			);
+			path = "Profile&ChatRequest";
+			sourceTree = "<group>";
+		};
+		595B27C6289A7D720054363C /* TabBar&Collections */ = {
+			isa = PBXGroup;
+			children = (
+				599C9C7C2848F994000F577F /* MainTabBarController.swift */,
+				599C9C792848F620000F577F /* ConversationViewController.swift */,
+				599C9C7E2848FA52000F577F /* PeopleViewController.swift */,
+			);
+			path = "TabBar&Collections";
 			sourceTree = "<group>";
 		};
 		5974D8452846396100EDE4E2 = {
@@ -261,12 +271,9 @@
 			isa = PBXGroup;
 			children = (
 				599C9C7B2848F8B4000F577F /* SignIn&Auth */,
+				595B27C6289A7D720054363C /* TabBar&Collections */,
+				595B27C5289A7D4C0054363C /* Profile&ChatRequest */,
 				595B27C2289A6EA80054363C /* Chats */,
-				599C9C7C2848F994000F577F /* MainTabBarController.swift */,
-				599C9C792848F620000F577F /* ConversationViewController.swift */,
-				599C9C7E2848FA52000F577F /* PeopleViewController.swift */,
-				59C5002E28630EEF0051F3A9 /* ProfileViewController.swift */,
-				59DC46F72865E6BA00E07D6F /* ChatRequestViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -404,12 +411,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59C500272860B7D50051F3A9 /* users.json in Resources */,
-				593242852859E6FA005FC4BF /* activeChats.json in Resources */,
 				5974D86628463AF200EDE4E2 /* .gitignore in Resources */,
 				5974D85E2846396400EDE4E2 /* LaunchScreen.storyboard in Resources */,
 				5974D85B2846396400EDE4E2 /* Assets.xcassets in Resources */,
-				593242832859E6F2005FC4BF /* waitingChats.json in Resources */,
 				592F26AA286AFC3200C823F4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
