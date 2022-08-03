@@ -7,30 +7,35 @@
 
 import Foundation
 import FirebaseFirestore
+import MessageKit
 
-struct MMessage: Hashable {
+struct MMessage: Hashable, MessageType {
     
+    var sender: SenderType
     let content: String
-    let senderId: String
-    let senderUserName: String
     let id: String?
-    var sendDate: Date
+    var sentDate: Date
+    var messageId: String {
+        id ?? UUID().uuidString
+    }
+    var kind: MessageKind {
+        .text(content)
+    }
     
     var representation: [String: Any] {
         let dict: [String: Any] = [
-            "created": sendDate,
+            "created": sentDate,
             "content": content,
-            "senderName": senderUserName,
-            "senderID": senderId
+            "senderName": sender.displayName,
+            "senderID": sender.senderId
         ]
         return dict
     }
 
     init(user: MUser, content: String) {
         self.content = content
-        senderId = user.id
-        senderUserName = user.userName
-        sendDate = Date()
+        sender = Sender(senderId: user.id, displayName: user.userName)
+        sentDate = Date()
         id = nil
     }
     
@@ -39,13 +44,20 @@ struct MMessage: Hashable {
         guard let content = data["content"] as? String,
               let senderId = data["senderID"] as? String,
               let senderUserName = data["senderName"] as? String,
-              let sendDate = data["created"] as? Timestamp else { return nil }
+              let sentDate = data["created"] as? Timestamp else { return nil }
         
         self.content = content
-        self.senderId = senderId
-        self.senderUserName = senderUserName
-        self.sendDate = sendDate.dateValue()
+        sender = Sender(senderId: senderId, displayName: senderUserName)
+        self.sentDate = sentDate.dateValue()
         self.id = document.documentID
+    }
+    
+    static func == (lhs: MMessage, rhs: MMessage) -> Bool {
+        lhs.messageId == rhs.messageId
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(messageId)
     }
     
 }
