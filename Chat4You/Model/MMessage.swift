@@ -61,3 +61,9 @@ struct MMessage: Hashable, MessageType {
     }
     
 }
+
+extension MMessage: Comparable {
+    static func < (lhs: MMessage, rhs: MMessage) -> Bool {
+        lhs.sentDate < rhs.sentDate
+    }
+}
