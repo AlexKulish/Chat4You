@@ -8,6 +8,7 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import FirebaseFirestore
 
 class ChatViewController: MessagesViewController {
     
@@ -15,6 +16,7 @@ class ChatViewController: MessagesViewController {
     private let chat: MChat
     
     private var messages: [MMessage] = []
+    private var messageListener: ListenerRegistration?
     
     init(user: MUser, chat: MChat) {
         self.user = user
@@ -27,10 +29,15 @@ class ChatViewController: MessagesViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        messageListener?.remove()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMessageInputBar()
         reworkLayoutOfMessage()
+        setupMessageListener()
         
         messagesCollectionView.backgroundColor = .customWhite
         
@@ -55,6 +62,17 @@ class ChatViewController: MessagesViewController {
             layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
             layout.textMessageSizeCalculator.incomingAvatarSize = .zero
         }
+    }
+    
+    private func setupMessageListener() {
+        messageListener = ListenerService.shared.messagesObserve(chat: chat, completion: { [weak self] result in
+            switch result {
+            case .success(let message):
+                self?.insertNewMessage(message: message)
+            case .failure(let error):
+                self?.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        })
     }
     
 }
@@ -158,7 +176,6 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let message = MMessage(user: user, content: text)
-        insertNewMessage(message: message)
         FirestoreService.shared.sendMessage(chat: chat, message: message) { result in
             switch result {
             case .success():

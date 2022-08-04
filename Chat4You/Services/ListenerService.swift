@@ -128,4 +128,29 @@ class ListenerService {
         return chatsListener
     }
     
+    func messagesObserve(chat: MChat, completion: @escaping (Result<MMessage, Error>) -> Void) -> ListenerRegistration? {
+        
+        let messageRef = usersRef.document(currentUserId).collection("activeChats").document(chat.friendId).collection("messages")
+        
+        let messageListener = messageRef.addSnapshotListener { querySnapshot, error in
+            guard let querySnapshot = querySnapshot else {
+                completion(.failure(error!))
+                return
+            }
+            
+            querySnapshot.documentChanges.forEach { documentChange in
+                guard let message = MMessage(document: documentChange.document) else { return }
+                switch documentChange.type {
+                case .added:
+                    completion(.success(message))
+                case .modified:
+                    break
+                case .removed:
+                    break
+                }
+            }
+        }
+        return messageListener
+    }
+    
 }
