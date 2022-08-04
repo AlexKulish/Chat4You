@@ -142,6 +142,21 @@ extension ChatViewController: MessagesDataSource {
         messages.count
     }
     
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        let messageFormatter = MessageKitDateFormatter.shared.string(from: message.sentDate)
+        
+        let attributes: [NSAttributedString.Key: Any]? = [
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10),
+            NSAttributedString.Key.foregroundColor: UIColor.darkGray
+        ]
+        
+        if indexPath.item % 5 == 0 {
+            return NSAttributedString(string: messageFormatter, attributes: attributes)
+        } else {
+            return nil
+        }
+    }
+    
 }
 
 // MARK: - MessagesLayoutDelegate
@@ -150,6 +165,14 @@ extension ChatViewController: MessagesLayoutDelegate {
     
     func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
         CGSize(width: 0, height: 8)
+    }
+    
+    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        if indexPath.item % 5 == 0 {
+            return 30
+        } else {
+            return 0
+        }
     }
     
 }
