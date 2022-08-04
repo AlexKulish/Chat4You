@@ -20,6 +20,7 @@
 		59324294285B6A2F005FC4BF /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59324293285B6A2F005FC4BF /* SectionHeader.swift */; };
 		594F4E0228883F3200166431 /* WaitingChatsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594F4E0128883F3200166431 /* WaitingChatsDelegate.swift */; };
 		595B27C4289A6ECF0054363C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595B27C3289A6ECF0054363C /* ChatViewController.swift */; };
+		595B27C8289BF1B00054363C /* UIScrollView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595B27C7289BF1AF0054363C /* UIScrollView + Extension.swift */; };
 		5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8512846396100EDE4E2 /* AppDelegate.swift */; };
 		5974D8542846396100EDE4E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8532846396100EDE4E2 /* SceneDelegate.swift */; };
 		5974D8562846396100EDE4E2 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974D8552846396100EDE4E2 /* AuthViewController.swift */; };
@@ -76,6 +77,7 @@
 		59324293285B6A2F005FC4BF /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		594F4E0128883F3200166431 /* WaitingChatsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsDelegate.swift; sourceTree = "<group>"; };
 		595B27C3289A6ECF0054363C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		595B27C7289BF1AF0054363C /* UIScrollView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView + Extension.swift"; sourceTree = "<group>"; };
 		5974D84E2846396100EDE4E2 /* Chat4You.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat4You.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5974D8512846396100EDE4E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5974D8532846396100EDE4E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				59C50032286354840051F3A9 /* UIView + Extension.swift */,
 				59B01B58287D877E00A0F752 /* UIImage + Extension.swift */,
 				59FCC4B62880204900BFA480 /* UIApplication + Extension.swift */,
+				595B27C7289BF1AF0054363C /* UIScrollView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				5974D8522846396100EDE4E2 /* AppDelegate.swift in Sources */,
 				5902A5CF2875C90F000A2605 /* FirestoreService.swift in Sources */,
 				59C5002F28630EEF0051F3A9 /* ProfileViewController.swift in Sources */,
+				595B27C8289BF1B00054363C /* UIScrollView + Extension.swift in Sources */,
 				59324294285B6A2F005FC4BF /* SectionHeader.swift in Sources */,
 				594F4E0228883F3200166431 /* WaitingChatsDelegate.swift in Sources */,
 				59C500292860B8670051F3A9 /* MUser.swift in Sources */,

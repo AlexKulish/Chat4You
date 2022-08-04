@@ -53,7 +53,16 @@ class ChatViewController: MessagesViewController {
         messages.append(message)
         messages.sort()
         
+        let isLastMessage = messages.firstIndex(of: message) == (messages.count - 1)
+        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLastMessage
+        
         messagesCollectionView.reloadData()
+        
+        if shouldScrollToBottom {
+            DispatchQueue.main.async {
+                self.messagesCollectionView.scrollToLastItem()
+            }
+        }
     }
     
     private func reworkLayoutOfMessage() {
