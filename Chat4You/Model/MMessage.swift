@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseFirestore
 import MessageKit
+import UIKit
 
 struct MMessage: Hashable, MessageType {
     
@@ -19,16 +20,29 @@ struct MMessage: Hashable, MessageType {
         id ?? UUID().uuidString
     }
     var kind: MessageKind {
-        .text(content)
+        if let image = image {
+            let mediaItem = ImageItem(url: nil, image: nil, placeholderImage: image, size: image.size)
+            return .photo(mediaItem)
+        } else {
+            return .text(content)
+        }
     }
     
+    var image: UIImage? = nil
+    var downloadURL: URL? = nil
+    
     var representation: [String: Any] {
-        let dict: [String: Any] = [
+        var dict: [String: Any] = [
             "created": sentDate,
-            "content": content,
             "senderName": sender.displayName,
             "senderID": sender.senderId
         ]
+        
+        if let downloadURL = downloadURL {
+            dict["url"] = downloadURL.absoluteString
+        } else {
+            dict["content"] = content
+        }
         return dict
     }
 
@@ -39,14 +53,30 @@ struct MMessage: Hashable, MessageType {
         id = nil
     }
     
+    init(user: MUser, image: UIImage) {
+        sender = Sender(senderId: user.id, displayName: user.userName)
+        self.image = image
+        content = ""
+        sentDate = Date()
+        id = nil
+    }
+    
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
-        guard let content = data["content"] as? String,
-              let senderId = data["senderID"] as? String,
+        guard let senderId = data["senderID"] as? String,
               let senderUserName = data["senderName"] as? String,
               let sentDate = data["created"] as? Timestamp else { return nil }
         
-        self.content = content
+        if let content = data["content"] as? String {
+            self.content = content
+            downloadURL = nil
+        } else if let urlString = data["url"] as? String, let url = URL(string: urlString) {
+            downloadURL = url
+            self.content = ""
+        } else {
+            return nil
+        }
+        
         sender = Sender(senderId: senderId, displayName: senderUserName)
         self.sentDate = sentDate.dateValue()
         self.id = document.documentID
