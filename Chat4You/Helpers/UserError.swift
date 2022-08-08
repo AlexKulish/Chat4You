@@ -19,13 +19,13 @@ extension UserError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .notFill:
-            return NSLocalizedString("Заполните все поля", comment: "")
+            return NSLocalizedString("Fill all fields", comment: "")
         case .photoNotExist:
-            return NSLocalizedString("Пользователь не выбрал фотографию", comment: "")
+            return NSLocalizedString("User has not selected a photo", comment: "")
         case .cannotGetUserInfo:
-            return NSLocalizedString("Не удается найти информацию по пользователю в базе данных", comment: "")
+            return NSLocalizedString("Unable to find user information in the database", comment: "")
         case .cannotUnwrapToMUser:
-            return NSLocalizedString("Не удается конвертировать модель MUser", comment: "")
+            return NSLocalizedString("Can't convert MUser model", comment: "")
 
         }
     }

@@ -76,6 +76,12 @@ extension SignUpViewController {
         passwordTextField.autocorrectionType = .no
         confirmPasswordTextField.autocorrectionType = .no
         
+        emailTextField.textContentType = .emailAddress
+        passwordTextField.textContentType = .oneTimeCode
+        confirmPasswordTextField.textContentType = .oneTimeCode
+        passwordTextField.isSecureTextEntry = true
+        confirmPasswordTextField.isSecureTextEntry = true
+        
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 0)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 0)
         let confirmPasswordStackView = UIStackView(arrangedSubviews: [confirmPasswordLabel, confirmPasswordTextField], axis: .vertical, spacing: 0)
