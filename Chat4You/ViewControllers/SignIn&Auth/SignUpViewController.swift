@@ -9,21 +9,27 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    let welcomeLabel = UILabel(text: "Good to see you!", font: .avenir26())
-    
-    let emailLabel = UILabel(text: "Email")
-    let passwordLabel = UILabel(text: "Password")
-    let confirmPasswordLabel = UILabel(text: "Confirm password")
-    let alreadyOnBoardLabel = UILabel(text: "Already onboard?")
-    
-    let signUpButton = UIButton(title: "Sign Up", titleColor: .white, backgroundColor: .customBlack)
-    let loginButton = UIButton(title: "Login", titleColor: .customRed, backgroundColor: .clear)
-    
-    let emailTextField = OneLineTextField(font: .avenir20())
-    let passwordTextField = OneLineTextField(font: .avenir20())
-    let confirmPasswordTextField = OneLineTextField(font: .avenir20())
+    // MARK: - Public properties
     
     weak var delegate: AuthNavigationDelegate?
+    
+    // MARK: - Private properties
+    
+    private let welcomeLabel = UILabel(text: "Good to see you!", font: .avenir26())
+    
+    private let emailLabel = UILabel(text: "Email")
+    private let passwordLabel = UILabel(text: "Password")
+    private let confirmPasswordLabel = UILabel(text: "Confirm password")
+    private let alreadyOnBoardLabel = UILabel(text: "Already onboard?")
+    
+    private let signUpButton = UIButton(title: "Sign Up", titleColor: .white, backgroundColor: .customBlack)
+    private let loginButton = UIButton(title: "Login", titleColor: .customRed, backgroundColor: .clear)
+    
+    private let emailTextField = OneLineTextField(font: .avenir20())
+    private let passwordTextField = OneLineTextField(font: .avenir20())
+    private let confirmPasswordTextField = OneLineTextField(font: .avenir20())
+    
+    // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +40,8 @@ class SignUpViewController: UIViewController {
         signUpButton.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
     }
+    
+    // MARK: - Private methods
     
     @objc private func signUpButtonPressed() {
         AuthService.shared.register(email: emailTextField.text, password: passwordTextField.text, confirmPassword: confirmPasswordTextField.text) { result in

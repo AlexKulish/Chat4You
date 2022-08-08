@@ -11,9 +11,13 @@ import FirebaseStorage
 
 class StorageService {
     
+    // MARK: - Public properties
+    
     static let shared = StorageService()
     
-    let storageRef = Storage.storage().reference()
+    // MARK: - Private properties
+    
+    private let storageRef = Storage.storage().reference()
     
     private var avatarsRef: StorageReference {
         storageRef.child("avatars")
@@ -27,7 +31,11 @@ class StorageService {
         Auth.auth().currentUser?.uid
     }
     
+    // MARK: - Initializers
+    
     private init() {}
+    
+    // MARK: - Upload avatar
     
     func upload(avatar: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
         
@@ -55,6 +63,8 @@ class StorageService {
         }
     }
     
+    // MARK: - UploadImageMessage
+    
     func uploadImageMessage(image: UIImage, to chat: MChat, completion: @escaping (Result<URL, Error>) -> Void) {
         
         guard let scaledImage = image.scaledToSafeUpUploadSize,
@@ -81,6 +91,8 @@ class StorageService {
             }
         }
     }
+    
+    // MARK: - DownloadImage
     
     func downloadImage(url: URL, completion: @escaping (Result<UIImage?, Error>) -> Void) {
         

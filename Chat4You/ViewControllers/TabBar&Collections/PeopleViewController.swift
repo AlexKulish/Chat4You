@@ -11,6 +11,8 @@ import FirebaseFirestore
 
 class PeopleViewController: UIViewController {
     
+    // MARK: - Private properties
+    
     private var users = [MUser]()
     private let currentUser: MUser
     
@@ -18,6 +20,8 @@ class PeopleViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, MUser>?
+    
+    // MARK: - Section
     
     enum Section: Int, CaseIterable {
         case users
@@ -29,6 +33,8 @@ class PeopleViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Initializers
     
     init(currentUser: MUser) {
         self.currentUser = currentUser
@@ -44,6 +50,8 @@ class PeopleViewController: UIViewController {
         usersListener?.remove()
     }
     
+    // MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customWhite
@@ -51,22 +59,13 @@ class PeopleViewController: UIViewController {
         setupCollectionView()
         setupDataSource()
         setupUsersListener()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logoutButtonPressed))
+        setupLogoutButton()
     }
-    
-    private func setupUsersListener() {
-        usersListener = ListenerService.shared.usersObserver(users: users, completion: { result in
-            switch result {
-            case .success(let users):
-                self.users = users
-                self.reloadData(with: nil)
-            case .failure(let error):
-                self.showAlert(with: "Error!", and: error.localizedDescription)
-            }
-        })
-    }
-    
+}
+
+// MARK: - SetupCollectionView
+
+extension PeopleViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -79,7 +78,11 @@ class PeopleViewController: UIViewController {
         
         collectionView.delegate = self
     }
-    
+}
+
+// MARK: - SetupSearchBar
+
+extension PeopleViewController {
     private func setupSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
@@ -88,16 +91,29 @@ class PeopleViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
     }
-    
-    private func reloadData(with searchText: String?) {
-        let filteredUsers = users.filter { user in
-            user.contains(filter: searchText)
-        }
-        
-        var snapshot = NSDiffableDataSourceSnapshot<Section, MUser>()
-        snapshot.appendSections([.users])
-        snapshot.appendItems(filteredUsers, toSection: .users)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+}
+
+// MARK: - Setup Listener
+
+extension PeopleViewController {
+    private func setupUsersListener() {
+        usersListener = ListenerService.shared.usersObserver(users: users, completion: { result in
+            switch result {
+            case .success(let users):
+                self.users = users
+                self.reloadData(with: nil)
+            case .failure(let error):
+                self.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        })
+    }
+}
+
+// MARK: - SetupLogoutButton
+
+extension PeopleViewController {
+    private func setupLogoutButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logoutButtonPressed))
     }
     
     @objc private func logoutButtonPressed() {
@@ -117,7 +133,6 @@ class PeopleViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
 }
 
 // MARK: - DataSource
@@ -151,6 +166,16 @@ extension PeopleViewController {
         }
     }
     
+    private func reloadData(with searchText: String?) {
+        let filteredUsers = users.filter { user in
+            user.contains(filter: searchText)
+        }
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Section, MUser>()
+        snapshot.appendSections([.users])
+        snapshot.appendItems(filteredUsers, toSection: .users)
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
 }
 
 // MARK: - Setup layout

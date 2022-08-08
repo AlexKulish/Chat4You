@@ -10,9 +10,13 @@ import FirebaseFirestore
 
 class FirestoreService {
     
+    // MARK: - Public properties
+    
     static let shared = FirestoreService()
     
-    let db = Firestore.firestore()
+    // MARK: - Private properties
+    
+    private let db = Firestore.firestore()
     
     private var usersRef: CollectionReference {
         db.collection("users")
@@ -28,8 +32,12 @@ class FirestoreService {
     
     private var currentUser: MUser!
     
+    // MARK: - Initializers
+    
     private init() {}
     
+    
+    // MARK: - GetUserData
     // Получаем юзера
     func getUserData(user: User, completion: @escaping (Result<MUser, Error>) -> Void) {
         
@@ -50,6 +58,7 @@ class FirestoreService {
         
     }
     
+    // MARK: - SaveProfile
     // Сохраняем профиль юзера
     func saveProfile(id: String, email: String, userName: String?, avatarImage: UIImage?, description: String?, sex: String?, completion: @escaping (Result<MUser, Error>) -> Void) {
         
@@ -85,6 +94,7 @@ class FirestoreService {
         }
     }
     
+    // MARK: - CreateWaitingChat
     // Создаем ожидающий чат
     func createWaitingChat(message: String, receiver: MUser, completion: @escaping (Result<Void, Error>) -> Void) {
 
@@ -113,6 +123,8 @@ class FirestoreService {
         }
     }
     
+    
+    // MARK: - DeleteWaitingChat
     // Удаляем ожидающий чат
     func deleteWaitingChat(chat: MChat, completion: @escaping (Result<Void, Error>) -> Void) {
         waitingChatsRef.document(chat.friendId).delete { error in
@@ -124,60 +136,8 @@ class FirestoreService {
         }
     }
     
-    // Получаем все сообщения
-    private func getWaitingChatMessages(chat: MChat, completion: @escaping (Result<[MMessage], Error>) -> Void) {
-        
-        var messages = [MMessage]()
-        
-        let messageReference = waitingChatsRef.document(chat.friendId).collection("messages")
-        
-        messageReference.getDocuments { querySnapshot, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let querySnapshot = querySnapshot else {
-                completion(.failure(error!))
-                return
-            }
-            
-            querySnapshot.documents.forEach { queryDocumentSnapshot in
-                guard let message = MMessage(document: queryDocumentSnapshot) else { return }
-                messages.append(message)
-            }
-            completion(.success(messages))
-        }
-    }
-    
-    // Удаляем сообщения
-    private func deleteWaitingChatMessages(chat: MChat, completion: @escaping (Result<Void, Error>) -> Void) {
-        
-        let messageReference = waitingChatsRef.document(chat.friendId).collection("messages")
-        
-        getWaitingChatMessages(chat: chat) { result in
-            switch result {
-            case .success(let messages):
-                for message in messages {
-                    guard let messageId = message.id else { return }
-                    let messageRef = messageReference.document(messageId)
-                    messageRef.delete { error in
-                        if let error = error {
-                            completion(.failure(error))
-                            return
-                        }
-                        completion(.success(Void()))
-                    }
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-        
-    }
-    
+    // MARK: - ChangeChatToActive
     // Переносим чат в активные
-    
     func changeChatToActive(chat: MChat, completion: @escaping (Result<Void, Error>) -> Void) {
         
         getWaitingChatMessages(chat: chat) { result in
@@ -204,29 +164,7 @@ class FirestoreService {
         }
     }
     
-    // создаем активный чат
-    
-    private func createActiveChat(chat: MChat, messages: [MMessage], completion: @escaping (Result<Void, Error>) -> Void) {
-        
-        let messageRef = activeChatsRef.document(chat.friendId).collection("messages")
-        
-        activeChatsRef.document(chat.friendId).setData(chat.representation) { error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            for message in messages {
-                messageRef.addDocument(data: message.representation) { error in
-                    if let error = error {
-                        completion(.failure(error))
-                        return
-                    }
-                    completion(.success(Void()))
-                }
-            }
-        }
-    }
-    
+    // MARK: - SendMessage
     func sendMessage(chat: MChat, message: MMessage, completion: @escaping (Result<Void, Error>) -> Void) {
         
         let friendRef = usersRef.document(chat.friendId).collection("activeChats").document(currentUser.id)
@@ -263,4 +201,80 @@ class FirestoreService {
         }
     }
     
+    // MARK: - GetWaitingChatMessages
+    // Получаем все сообщения
+    private func getWaitingChatMessages(chat: MChat, completion: @escaping (Result<[MMessage], Error>) -> Void) {
+        
+        var messages = [MMessage]()
+        
+        let messageReference = waitingChatsRef.document(chat.friendId).collection("messages")
+        
+        messageReference.getDocuments { querySnapshot, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let querySnapshot = querySnapshot else {
+                completion(.failure(error!))
+                return
+            }
+            
+            querySnapshot.documents.forEach { queryDocumentSnapshot in
+                guard let message = MMessage(document: queryDocumentSnapshot) else { return }
+                messages.append(message)
+            }
+            completion(.success(messages))
+        }
+    }
+    
+    // MARK: - DeleteWaitingChatMessages
+    // Удаляем сообщения
+    private func deleteWaitingChatMessages(chat: MChat, completion: @escaping (Result<Void, Error>) -> Void) {
+        
+        let messageReference = waitingChatsRef.document(chat.friendId).collection("messages")
+        
+        getWaitingChatMessages(chat: chat) { result in
+            switch result {
+            case .success(let messages):
+                for message in messages {
+                    guard let messageId = message.id else { return }
+                    let messageRef = messageReference.document(messageId)
+                    messageRef.delete { error in
+                        if let error = error {
+                            completion(.failure(error))
+                            return
+                        }
+                        completion(.success(Void()))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+        
+    }
+    
+    // MARK: - CreateActiveChat
+    // создаем активный чат
+    private func createActiveChat(chat: MChat, messages: [MMessage], completion: @escaping (Result<Void, Error>) -> Void) {
+        
+        let messageRef = activeChatsRef.document(chat.friendId).collection("messages")
+        
+        activeChatsRef.document(chat.friendId).setData(chat.representation) { error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            for message in messages {
+                messageRef.addDocument(data: message.representation) { error in
+                    if let error = error {
+                        completion(.failure(error))
+                        return
+                    }
+                    completion(.success(Void()))
+                }
+            }
+        }
+    }
 }

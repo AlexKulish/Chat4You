@@ -12,11 +12,15 @@ import FirebaseFirestore
 
 class ChatViewController: MessagesViewController {
     
+    // MARK: - Private properties
+    
     private let user: MUser
     private let chat: MChat
     
     private var messages: [MMessage] = []
     private var messageListener: ListenerRegistration?
+    
+    // MARK: - Initializers
     
     init(user: MUser, chat: MChat) {
         self.user = user
@@ -33,6 +37,8 @@ class ChatViewController: MessagesViewController {
         messageListener?.remove()
     }
     
+    // MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMessageInputBar()
@@ -46,35 +52,11 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
     }
-    
-    private func insertNewMessage(message: MMessage) {
-        
-        guard !messages.contains(message) else { return }
-        messages.append(message)
-        messages.sort()
-        
-        let isLastMessage = messages.firstIndex(of: message) == (messages.count - 1)
-        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLastMessage
-        
-        messagesCollectionView.reloadData()
-        
-        if shouldScrollToBottom {
-            DispatchQueue.main.async {
-                self.messagesCollectionView.scrollToLastItem()
-            }
-        }
-    }
-    
-    private func reworkLayoutOfMessage() {
-        // Чтобы убрать расстояние между сообщением и правой частью экрана
-        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
-            layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
-            layout.textMessageSizeCalculator.incomingAvatarSize = .zero
-            layout.photoMessageSizeCalculator.incomingAvatarSize = .zero
-            layout.photoMessageSizeCalculator.outgoingAvatarSize = .zero
-        }
-    }
-    
+}
+
+// MARK: - SetupMessageListener
+
+extension ChatViewController {
     private func setupMessageListener() {
         messageListener = ListenerService.shared.messagesObserve(chat: chat, completion: { [weak self] result in
             switch result {
@@ -98,6 +80,28 @@ class ChatViewController: MessagesViewController {
             }
         })
     }
+}
+
+// MARK: - Send messages
+
+extension ChatViewController {
+    private func insertNewMessage(message: MMessage) {
+        
+        guard !messages.contains(message) else { return }
+        messages.append(message)
+        messages.sort()
+        
+        let isLastMessage = messages.firstIndex(of: message) == (messages.count - 1)
+        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLastMessage
+        
+        messagesCollectionView.reloadData()
+        
+        if shouldScrollToBottom {
+            DispatchQueue.main.async {
+                self.messagesCollectionView.scrollToLastItem()
+            }
+        }
+    }
     
     private func sendImage(image: UIImage) {
         StorageService.shared.uploadImageMessage(image: image, to: chat) { [weak self] result in
@@ -119,7 +123,6 @@ class ChatViewController: MessagesViewController {
             }
         }
     }
-    
 }
 
 // MARK: - ConfigureMessageInputBar
@@ -189,6 +192,20 @@ extension ChatViewController {
     }
 }
 
+// MARK: - Setup layout
+
+extension ChatViewController {
+    private func reworkLayoutOfMessage() {
+        // Чтобы убрать расстояние между сообщением и правой частью экрана
+        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
+            layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.textMessageSizeCalculator.incomingAvatarSize = .zero
+            layout.photoMessageSizeCalculator.incomingAvatarSize = .zero
+            layout.photoMessageSizeCalculator.outgoingAvatarSize = .zero
+        }
+    }
+}
+
 // MARK: - MessagesDataSource
 
 extension ChatViewController: MessagesDataSource {
@@ -241,7 +258,6 @@ extension ChatViewController: MessagesLayoutDelegate {
             return 0
         }
     }
-    
 }
 
 // MARK: - MessagesDisplayDelegate

@@ -9,7 +9,11 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
+    // MARK: - Private properties
+    
     private let currentUser: MUser
+    
+    // MARK: - Initializers
     
     init(currentUser: MUser) {
         self.currentUser = currentUser
@@ -19,6 +23,8 @@ class MainTabBarController: UITabBarController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +42,8 @@ class MainTabBarController: UITabBarController {
             setupNavigationController(rootViewController: listVC, title: "Conversations", image: conversationImage ?? UIImage())
         ]
     }
+    
+    // MARK: - Private methods
     
     private func setupNavigationController(rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
         let navigationVC = UINavigationController(rootViewController: rootViewController)

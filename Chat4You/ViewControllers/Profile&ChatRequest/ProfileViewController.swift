@@ -10,6 +10,8 @@ import SDWebImage
 
 class ProfileViewController: UIViewController {
     
+    // MARK: - Private properties
+    
     private let user: MUser
     
     private lazy var containerView: UIView = {
@@ -52,6 +54,8 @@ class ProfileViewController: UIViewController {
         return textField
     }()
     
+    // MARK: - Initializers
+    
     init(user: MUser) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -64,6 +68,8 @@ class ProfileViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()

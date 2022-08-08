@@ -10,7 +10,11 @@ import SDWebImage
 
 class ActiveChatCell: UICollectionViewCell, ConfigureCellProtocol {
     
+    // MARK: - Public properties
+    
     static var reuseId = "ActiveChatCell"
+    
+    // MARK: - Private properties
     
     private lazy var friendImageView: UIImageView = {
         let imageView = UIImageView()
@@ -42,6 +46,7 @@ class ActiveChatCell: UICollectionViewCell, ConfigureCellProtocol {
         return view
     }()
     
+    // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,13 +56,13 @@ class ActiveChatCell: UICollectionViewCell, ConfigureCellProtocol {
         
         self.layer.cornerRadius = 4
         self.clipsToBounds = true
-        
-
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public methods
     
     func configure<U>(with value: U) where U : Hashable {
         guard let chat: MChat = value as? MChat else { return }

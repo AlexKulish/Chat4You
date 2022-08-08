@@ -9,21 +9,27 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let welcomeLabel = UILabel(text: "Welcome back!", font: .avenir26())
-    let loginWithLabel = UILabel(text: "Login with")
-    let orLabel = UILabel(text: "or")
-    let emailLabel = UILabel(text: "Email")
-    let passwordLabel = UILabel(text: "Password")
-    let needAnAccountLabel = UILabel(text: "Need an account?")
-    
-    let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
-    let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .customBlack)
-    let signUpButton = UIButton(title: "Sign up", titleColor: .customRed, backgroundColor: .clear)
-    
-    let emailTextField = OneLineTextField(font: .avenir20())
-    let passwordTextField = OneLineTextField(font: .avenir20())
+    // MARK: - Public properties
     
     weak var delegate: AuthNavigationDelegate?
+    
+    // MARK: - Private properties
+    
+    private let welcomeLabel = UILabel(text: "Welcome back!", font: .avenir26())
+    private let loginWithLabel = UILabel(text: "Login with")
+    private let orLabel = UILabel(text: "or")
+    private let emailLabel = UILabel(text: "Email")
+    private let passwordLabel = UILabel(text: "Password")
+    private let needAnAccountLabel = UILabel(text: "Need an account?")
+    
+    private let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
+    private let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .customBlack)
+    private let signUpButton = UIButton(title: "Sign up", titleColor: .customRed, backgroundColor: .clear)
+    
+    private let emailTextField = OneLineTextField(font: .avenir20())
+    private let passwordTextField = OneLineTextField(font: .avenir20())
+    
+    // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +41,8 @@ class LoginViewController: UIViewController {
         signUpButton.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
         googleButton.addTarget(self, action: #selector(googleButtonPressed), for: .touchUpInside)
     }
+    
+    // MARK: - Private methods
     
     @objc private func loginButtonPressed() {
         

@@ -9,19 +9,23 @@ import UIKit
 
 class AuthViewController: UIViewController {
     
-    let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
-    let emailButton = UIButton(title: "Email", titleColor: .white, backgroundColor: .customBlack)
-    let loginButton = UIButton(title: "Login", titleColor: .customRed, backgroundColor: .white, isShadow: true)
+    // MARK: - Private properties
     
-    let googleLabel = UILabel(text: "Get started with")
-    let emailLabel = UILabel(text: "Or sign up with")
-    let alreadyOnBoardLabel = UILabel(text: "Already onboard?")
+    private let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
+    private let emailButton = UIButton(title: "Email", titleColor: .white, backgroundColor: .customBlack)
+    private let loginButton = UIButton(title: "Login", titleColor: .customRed, backgroundColor: .white, isShadow: true)
     
-    let logoImageView = UIImageView(image: UIImage(named: "Logo"), contentMode: .scaleAspectFit)
+    private let googleLabel = UILabel(text: "Get started with")
+    private let emailLabel = UILabel(text: "Or sign up with")
+    private let alreadyOnBoardLabel = UILabel(text: "Already onboard?")
     
-    let signUpVC = SignUpViewController()
-    let loginVC = LoginViewController()
-
+    private let logoImageView = UIImageView(image: UIImage(named: "Logo"), contentMode: .scaleAspectFit)
+    
+    private let signUpVC = SignUpViewController()
+    private let loginVC = LoginViewController()
+    
+    // MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customWhite
@@ -35,6 +39,8 @@ class AuthViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         googleButton.addTarget(self, action: #selector(googleButtonPressed), for: .touchUpInside)
     }
+    
+    // MARK: - Private methods
     
     @objc private func emailButtonPressed() {
         present(signUpVC, animated: true, completion: nil)

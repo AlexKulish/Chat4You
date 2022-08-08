@@ -11,21 +11,25 @@ import SDWebImage
 
 class SetupProfileViewController: UIViewController {
     
-    let fullPhotoView = AddPhotoView()
+    // MARK: - Private properties
     
-    let welcomeLabel = UILabel(text: "Setup profile", font: .avenir26())
-    let fullNameLabel = UILabel(text: "Full name")
-    let aboutMeLabel = UILabel(text: "About me")
-    let sexLabel = UILabel(text: "Sex")
+    private let fullPhotoView = AddPhotoView()
     
-    let fullNameTextField = OneLineTextField(font: .avenir20())
-    let aboutMeTextField = OneLineTextField(font: .avenir20())
+    private let welcomeLabel = UILabel(text: "Setup profile", font: .avenir26())
+    private let fullNameLabel = UILabel(text: "Full name")
+    private let aboutMeLabel = UILabel(text: "About me")
+    private let sexLabel = UILabel(text: "Sex")
     
-    let sexSegmentedControl = UISegmentedControl(first: "Male", second: "Female")
+    private let fullNameTextField = OneLineTextField(font: .avenir20())
+    private let aboutMeTextField = OneLineTextField(font: .avenir20())
     
-    let goToChatsButton = UIButton(title: "Go to chats!", titleColor: .white, backgroundColor: .customBlack)
+    private let sexSegmentedControl = UISegmentedControl(first: "Male", second: "Female")
+    
+    private let goToChatsButton = UIButton(title: "Go to chats!", titleColor: .white, backgroundColor: .customBlack)
     
     private let currentUser: User
+    
+    // MARK: - Initializers
     
     init(currentUser: User) {
         self.currentUser = currentUser
@@ -45,6 +49,8 @@ class SetupProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customWhite
@@ -54,6 +60,8 @@ class SetupProfileViewController: UIViewController {
         goToChatsButton.addTarget(self, action: #selector(goToChatsButtonPressed), for: .touchUpInside)
         fullPhotoView.plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
     }
+    
+    // MARK: - Private methods
     
     @objc private func goToChatsButtonPressed() {
         

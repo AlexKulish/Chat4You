@@ -12,9 +12,15 @@ import GoogleSignIn
 
 class AuthService {
     
+    // MARK: - Public properties
+    
     static let shared = AuthService()
     
+    // MARK: - Private properties
+    
     private let auth = Auth.auth()
+    
+    // MARK: - Register
     
     func register(email: String?, password: String?, confirmPassword: String?, completion: @escaping (Result<User, Error>) -> Void) {
         
@@ -51,6 +57,8 @@ class AuthService {
         }
     }
     
+    // MARK: - Login
+    
     func login(email: String?, password: String?, completion: @escaping (Result<User, Error>) -> Void) {
         
         guard let email = email, let password = password else {
@@ -67,6 +75,8 @@ class AuthService {
         }
         
     }
+    
+    // MARK: - LoginWithGoogle
     
     func loginWithGoogle(viewController: UIViewController, completion: @escaping (Result<User, Error>) -> Void) {
         
@@ -103,9 +113,5 @@ class AuthService {
                 
             }
         }
-        
     }
-    
 }
-
-

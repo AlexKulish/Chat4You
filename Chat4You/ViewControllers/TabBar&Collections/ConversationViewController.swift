@@ -10,6 +10,8 @@ import FirebaseFirestore
 
 class ConversationViewController: UIViewController {
     
+    // MARK: - Private properties
+    
     private var activeChats = [MChat]()
     private var waitingChats = [MChat]()
     private let currentUser: MUser
@@ -18,6 +20,8 @@ class ConversationViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, MChat>?
+    
+    // MARK: - Section
     
     enum Section: Int, CaseIterable {
         case waitingChats, activeChats
@@ -31,6 +35,8 @@ class ConversationViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Initializers
     
     init(currentUser: MUser) {
         self.currentUser = currentUser
@@ -47,17 +53,22 @@ class ConversationViewController: UIViewController {
         activeChatsListener?.remove()
     }
     
+    // MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customWhite
         setupCollectionView()
-        setupSearchBar()
         setupDataSource()
         reloadData()
         setupWaitingChatsListener()
         setupActiveChatsListener()
     }
-    
+}
+
+// MARK: - SetupCollectionView
+
+extension ConversationViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -71,23 +82,11 @@ class ConversationViewController: UIViewController {
         
         collectionView.delegate = self
     }
-    
-    private func setupSearchBar() {
-        let searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
-    }
-    
-    private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, MChat>()
-        snapshot.appendSections([.waitingChats, .activeChats])
-        snapshot.appendItems(waitingChats, toSection: .waitingChats)
-        snapshot.appendItems(activeChats, toSection: .activeChats)
-        dataSource?.apply(snapshot, animatingDifferences: true)
-    }
+}
+
+// MARK: - Setup Listeners
+
+extension ConversationViewController {
     
     private func setupWaitingChatsListener() {
         
@@ -121,9 +120,7 @@ class ConversationViewController: UIViewController {
                 self?.showAlert(with: "Error!", and: error.localizedDescription)
             }
         })
-        
     }
-    
 }
 
 // MARK: - DataSource
@@ -154,6 +151,14 @@ extension ConversationViewController {
             return sectionHeader
             
         }
+    }
+    
+    private func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, MChat>()
+        snapshot.appendSections([.waitingChats, .activeChats])
+        snapshot.appendItems(waitingChats, toSection: .waitingChats)
+        snapshot.appendItems(activeChats, toSection: .activeChats)
+        dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
 
@@ -228,16 +233,6 @@ extension ConversationViewController {
     
 }
 
-// MARK: - UISearchBarDelegate
-
-extension ConversationViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
-    }
-    
-}
-
 // MARK: - UICollectionViewDelegate
 
 extension ConversationViewController: UICollectionViewDelegate {
@@ -283,5 +278,4 @@ extension ConversationViewController: WaitingChatsDelegate {
             }
         }
     }
-    
 }

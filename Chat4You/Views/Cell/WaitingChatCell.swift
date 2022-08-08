@@ -10,7 +10,11 @@ import SDWebImage
 
 class WaitingChatCell: UICollectionViewCell, ConfigureCellProtocol {
     
+    // MARK: - Public properties
+    
     static var reuseId = "WaitingChatCell"
+    
+    // MARK: - Private properties
     
     private lazy var friendImageView: UIImageView = {
         let imageView = UIImageView()
@@ -19,6 +23,8 @@ class WaitingChatCell: UICollectionViewCell, ConfigureCellProtocol {
         imageView.clipsToBounds = true
         return imageView
     }()
+    
+    // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +35,8 @@ class WaitingChatCell: UICollectionViewCell, ConfigureCellProtocol {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public methods
     
     func configure<U>(with value: U) where U : Hashable {
         guard let chat = value as? MChat else { return }

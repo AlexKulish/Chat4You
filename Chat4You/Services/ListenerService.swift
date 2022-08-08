@@ -12,7 +12,11 @@ import UIKit
 
 class ListenerService {
     
+    // MARK: - Public properties
+    
     static let shared = ListenerService()
+    
+    // MARK: - Private properties
     
     private let db = Firestore.firestore()
     
@@ -24,7 +28,11 @@ class ListenerService {
         Auth.auth().currentUser!.uid
     }
     
+    // MARK: - Initializers
+    
     private init() {}
+    
+    // MARK: - UsersObserver
     
     func usersObserver(users: [MUser], completion: @escaping(Result<[MUser], Error>) -> Void) -> ListenerRegistration? {
         
@@ -57,6 +65,8 @@ class ListenerService {
         }
         return usersListener
     }
+    
+    // MARK: - WaitingChatsObserve
     
     func waitingChatsObserve(chats: [MChat], completion: @escaping (Result <[MChat], Error>) -> Void) -> ListenerRegistration? {
         
@@ -92,6 +102,8 @@ class ListenerService {
         }
         return chatsListener
     }
+     
+    // MARK: - ActiveChatsObserve
     
     func activeChatsObserve(chats: [MChat], completion: @escaping (Result <[MChat], Error>) -> Void) -> ListenerRegistration? {
         
@@ -127,6 +139,8 @@ class ListenerService {
         }
         return chatsListener
     }
+    
+    // MARK: - MessagesObserve
     
     func messagesObserve(chat: MChat, completion: @escaping (Result<MMessage, Error>) -> Void) -> ListenerRegistration? {
         

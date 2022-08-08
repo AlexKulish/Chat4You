@@ -10,7 +10,11 @@ import SDWebImage
 
 class ChatRequestViewController: UIViewController {
     
+    // MARK: - Public properties
+    
     weak var delegate: WaitingChatsDelegate?
+    
+    // MARK: - Private properties
     
     private let chat: MChat
     
@@ -69,6 +73,8 @@ class ChatRequestViewController: UIViewController {
         return stackView
     }()
     
+    // MARK: - Initializers
+    
     init(chat: MChat) {
         self.chat = chat
         super.init(nibName: nil, bundle: nil)
@@ -82,6 +88,8 @@ class ChatRequestViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customWhite
@@ -93,6 +101,8 @@ class ChatRequestViewController: UIViewController {
         super.viewWillLayoutSubviews()
         acceptButton.applyGradients(with: 10)
     }
+    
+    // MARK: - Private methods
     
     @objc private func acceptButtonPressed() {
         self.dismiss(animated: true) {

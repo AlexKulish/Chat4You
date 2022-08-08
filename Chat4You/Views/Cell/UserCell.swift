@@ -10,7 +10,11 @@ import SDWebImage
 
 class UserCell: UICollectionViewCell, ConfigureCellProtocol {
     
+    // MARK: - Public properties
+    
     static var reuseId = "UserCell"
+    
+    // MARK: - Private properties
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
@@ -35,12 +39,20 @@ class UserCell: UICollectionViewCell, ConfigureCellProtocol {
         return view
     }()
     
+    // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
         setupConstraints()
         setupShadow()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle methods
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -52,17 +64,7 @@ class UserCell: UICollectionViewCell, ConfigureCellProtocol {
         userImageView.image = nil
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupShadow() {
-        layer.cornerRadius = 4
-        layer.shadowColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
-        layer.shadowRadius = 3
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0, height: 4)
-    }
+    // MARK: - Public methods
     
     func configure<U>(with value: U) where U : Hashable {
         guard let user = value as? MUser else { return }
@@ -71,6 +73,15 @@ class UserCell: UICollectionViewCell, ConfigureCellProtocol {
         userNameLabel.text = user.userName
     }
     
+    // MARK: - Private methods
+    
+    private func setupShadow() {
+        layer.cornerRadius = 4
+        layer.shadowColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
+        layer.shadowRadius = 3
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+    }
 }
 
 // MARK: - Setup constraints
