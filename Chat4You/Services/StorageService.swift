@@ -5,7 +5,7 @@
 //  Created by Alex Kulish on 12.07.2022.
 //
 
-import Foundation
+import UIKit
 import FirebaseAuth
 import FirebaseStorage
 
@@ -74,8 +74,8 @@ class StorageService {
         metadata.contentType = "image/jpeg"
         
         let imageName = [UUID().uuidString, String(Date().timeIntervalSince1970)].joined()
-        guard let userName = Auth.auth().currentUser?.displayName else { return }
-        let chatName = [chat.friendUserName, userName].joined()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let chatName = [chat.friendUserName, uid].joined()
         
         chatsRef.child(chatName).child(imageName).putData(imageData, metadata: metadata) { metadata, error in
             guard let _ = metadata else {

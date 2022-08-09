@@ -58,7 +58,7 @@ class ChatViewController: MessagesViewController {
 
 extension ChatViewController {
     private func setupMessageListener() {
-        messageListener = ListenerService.shared.messagesObserve(chat: chat, completion: { [weak self] result in
+        messageListener = ListenerService.shared.messagesObserve(chat: chat, completion: { result in
             switch result {
             case .success(var message):
                 if let url = message.downloadURL {
@@ -73,10 +73,10 @@ extension ChatViewController {
                         }
                     }
                 } else {
-                    self?.insertNewMessage(message: message)
+                    self.insertNewMessage(message: message)
                 }
             case .failure(let error):
-                self?.showAlert(with: "Error!", and: error.localizedDescription)
+                self.showAlert(with: "Error!", and: error.localizedDescription)
             }
         })
     }
@@ -114,12 +114,12 @@ extension ChatViewController {
                     switch result {
                     case .success():
                         self.messagesCollectionView.scrollToLastItem()
-                    case .failure(let error):
-                        self.showAlert(with: "Error!", and: error.localizedDescription)
+                    case .failure(_):
+                        self.showAlert(with: "Error!", and: "Image not delivered")
                     }
                 }
-            case .failure(_):
-                self.showAlert(with: "Error!", and: "Image not delivered")
+            case .failure(let error):
+                self.showAlert(with: "Error!", and: error.localizedDescription)
             }
         }
     }
